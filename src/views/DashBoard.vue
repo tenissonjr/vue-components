@@ -12,10 +12,12 @@
               :alias="itemCard.alias"
               :size="itemCard.size"
               :text="itemCard.text"
-              :value="itemCard.value"
+              :quantity="itemCard.quantity"
               :iconName="itemCard.iconName"
               :selected="itemCard.selected"
+              :value="itemCard.value"
               @onCardSelected="selectCard"
+              @onCardDeselected="deselectCard"
             />
           </div>
         </div>
@@ -26,25 +28,29 @@
 <script setup lang="ts">
 import { useDashCard } from '@/composables/DashCardComposable'
 
-const { addCard, getSmallCards, selectCardByAlias } = useDashCard()
+const { addCard, getSmallCards, selectCardByAlias, deselectCardByAlias } = useDashCard()
 
-const selectCard = (alias: string): void => {
+const selectCard = (alias: string, value: object): void => {
   selectCardByAlias(alias)
+  if (value) alert(value)
 }
-
+const deselectCard = (alias: string): void => {
+  deselectCardByAlias(alias)
+}
 addCard({
   alias: 'trEmElaboracao',
   size: 'small',
   text: 'Em elaboração',
-  value: 1,
+  quantity: 1,
   selected: false,
   iconName: 'bi bi-pencil-square',
+  value: { teste: 'teste' },
 })
 addCard({
   alias: 'trCancelados',
   size: 'small',
   text: 'Cancelados',
-  value: 1,
+  quantity: 1,
   selected: false,
   iconName: 'bi bi-x-circle',
 })
@@ -52,7 +58,7 @@ addCard({
   alias: 'trEmAguardandoAnalise',
   size: 'small',
   text: 'Aguardando análise',
-  value: 1,
+  quantity: 1,
   selected: false,
   iconName: 'bi bi-hourglass-split',
 })
@@ -60,7 +66,7 @@ addCard({
   alias: 'trEmAnalise',
   size: 'small',
   text: 'Em análise',
-  value: 2,
+  quantity: 2,
   selected: false,
   iconName: 'bi bi-zoom-in',
 })
@@ -68,7 +74,7 @@ addCard({
   alias: 'trEmAguardandoRetificacao',
   size: 'small',
   text: 'Aguardando retificação',
-  value: 2,
+  quantity: 2,
   selected: false,
   iconName: 'bi bi-exclamation-circle',
 })
@@ -76,7 +82,7 @@ addCard({
   alias: 'trConcluidos',
   size: 'small',
   text: 'Concluídos',
-  value: 14,
+  quantity: 14,
   selected: false,
   iconName: 'bi bi-check-circle',
 })
@@ -84,7 +90,7 @@ addCard({
   alias: 'trsPublicados',
   size: 'small',
   text: 'Publicados',
-  value: 11,
+  quantity: 11,
   selected: false,
   iconName: 'bi bi-newspaper',
 })

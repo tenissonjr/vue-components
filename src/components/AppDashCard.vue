@@ -1,9 +1,9 @@
 <template>
-  <div @click="doSelectCard(props.alias)" :aria-describedby="alias">
+  <div ref="divCard" @click="doClick(props.alias, props.value)" :aria-describedby="alias">
     <div :class="[sizeCardClass, colorCardClass]">
       <div class="card_body">
-        <div class="card_value" :class="valueClass">
-          {{ value }}
+        <div class="card_quantity" :class="quantityClass">
+          {{ quantity }}
         </div>
         <div class="card_icon">
           <i class="icon" :class="[iconClass, iconName]"></i>
@@ -11,11 +11,13 @@
       </div>
       <div v-bind:class="sizeTextClass">
         <a
-          aria-label="Teste de descrição"
+          ref="linkCard"
           tabindex="0"
           href="#"
           :class="colorTextClass"
-          @keydown.enter="doSelectCard(props.alias)"
+          @focus="onLinkEnter"
+          @blur="onLinkExit"
+          @keydown.enter="doClick(props.alias, props.value)"
         >
           <span :id="alias"><span v-html="text"></span></span
         ></a>
@@ -25,14 +27,27 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import type { IDashCard } from '@/types/IDashCard'
 const props = defineProps<IDashCard>()
 
-const emit = defineEmits(['onCardSelected'])
+const emit = defineEmits(['onCardSelected', 'onCardDeselected'])
+const linkCard = ref<HTMLElement | null>(null)
+const divCard = ref<HTMLDivElement | null>(null)
 
-const doSelectCard = (alias: string): void => {
-  emit('onCardSelected', alias)
+const doClick = (alias: string, value: object): void => {
+  if (props.selected) {
+    emit('onCardDeselected', alias, value)
+  } else {
+    emit('onCardSelected', alias, value)
+  }
+}
+
+const onLinkEnter = (): void => {
+  linkCard.value?.classList.add('focus-border')
+}
+const onLinkExit = (): void => {
+  linkCard.value?.classList.remove('focus-border')
 }
 
 const isLargeCard = computed((): boolean => props.size == 'large')
@@ -41,7 +56,7 @@ const sizeCardClass = computed((): string => (isLargeCard.value ? 'card--large' 
 
 const colorCardClass = computed((): string => (props.selected ? 'dashcard_selected' : 'dashcard'))
 
-const valueClass = computed((): string => 'card_title--' + props.size)
+const quantityClass = computed((): string => 'card_title--' + props.size)
 
 const iconClass = computed((): string => 'icon--' + props.size)
 
@@ -50,10 +65,13 @@ const sizeTextClass = computed((): string => 'card_text--' + props.size)
 const colorTextClass = computed(() => (props.selected ? 'card_text_selected' : 'card_text'))
 </script>
 <style>
-/* Adicionando estilo para remover sublinhado dos links */
 a {
   text-decoration: none;
   color: #000 !important;
+}
+.focus-border {
+  outline: none;
+  border-bottom: 2px dotted#8daee9;
 }
 .icon {
   color: #8daee9;
@@ -115,17 +133,6 @@ a {
   opacity: 1 !important;
 }
 
-.contadorPendencias_inativo:link {
-  text-decoration: none !important;
-}
-
-.contadorPendencias_inativo {
-  font-size: 2em !important;
-  color: #0987b0 !important;
-  text-decoration: none;
-  font-style: normal !important;
-  font-weight: 600 !important;
-}
 .card--small {
   max-height: 7rem !important;
   min-height: 120px !important;
@@ -176,7 +183,7 @@ a {
   color: rgb(255, 255, 0) !important;
 }
 
-.card_value {
+.card_quantity {
   position: absolute !important;
   left: 10px !important;
   top: 12px !important;
@@ -184,43 +191,16 @@ a {
   font-weight: 700 !important;
   line-height: 100% !important;
 }
-/*
-.fcard__numero:hover,
-.fcard__numero:focus {
-  font-weight: bold;
-  font-size: 32px;
-  color: rgb(255, 255, 0) !important;
-}
-*/
 
 .card_text {
   color: #000 !important;
-  /*
-  position: absolute !important;
-  height: 32px !important;
-  left: 10px !important;
-  */
   font-style: normal !important;
   font-weight: 400 !important;
-  /*
-  line-height: 100% !important;
-  letter-spacing: 0.02em !important;
-  */
 }
 
 .card_text_selected {
   color: rgb(255, 255, 0) !important;
-  /*
-  position: absolute !important;
-  height: 32px !important;
-  left: 10px !important;
-  */
   font-style: normal !important;
-  /*
-  font-weight: 400 !important;
-  letter-spacing: 0.02em !important;
-  line-height: 25px !important;
-  */
 }
 
 .card_text_pendencias--large {
@@ -245,12 +225,6 @@ a {
   margin-left: 10px;
 }
 
-/*
-.card_text:hover,
-.card_text:focus {
-  color: #fff !important;
-}
-*/
 .card_text:last-child {
   margin-bottom: 0;
 }

@@ -34,11 +34,31 @@ export function useDashCard() {
     })
   }
 
+  const deselectCardByAlias = (alias: string): void => {
+    const cardExists = cards.value.some((card) => card.alias === alias)
+    if (!cardExists) {
+      return
+    }
+    //Desmarcar todos os cards com o alias passado
+    cards.value.forEach((card) => {
+      if (card.alias === alias) {
+        card.selected = false
+      }
+    })
+  }
+  const deselectAllCards = (): void => {
+    cards.value.forEach((card) => {
+      card.selected = false
+    })
+  }
+
   return {
     addCard,
     getCards,
     getLargeCards,
     getSmallCards,
     selectCardByAlias,
+    deselectCardByAlias,
+    deselectAllCards,
   }
 }

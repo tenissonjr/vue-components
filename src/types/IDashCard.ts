@@ -2,7 +2,8 @@ export interface IDashCard {
   alias: string
   size: 'large' | 'small'
   text: string
-  value: number
+  quantity: number
   iconName: string
   selected: boolean
+  value?: object
 }
