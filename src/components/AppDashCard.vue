@@ -1,6 +1,12 @@
 <template>
-  <div ref="divCard" @click="doClick(props.alias, props.value)" :aria-describedby="alias">
-    <div :class="[sizeCardClass, colorCardClass]">
+  <div
+    @click="doClick(props.alias, props.value)"
+    @mouseover="onCardMouseOver"
+    @mouseleave="onCardMouseLeave"
+    @blur="onCardExit"
+    :aria-describedby="alias"
+  >
+    <div ref="divCard" :class="[sizeCardClass, colorCardClass]">
       <div class="card_body">
         <div class="card_quantity" :class="quantityClass">
           {{ quantity }}
@@ -15,9 +21,8 @@
           tabindex="0"
           href="#"
           :class="colorTextClass"
-          @focus="onLinkEnter"
-          @blur="onLinkExit"
-          @keydown.enter="doClick(props.alias, props.value)"
+          @focus="onCardEnter"
+          @blur="onCardExit"
         >
           <span :id="alias"><span v-html="text"></span></span
         ></a>
@@ -35,7 +40,7 @@ const emit = defineEmits(['onCardSelected', 'onCardDeselected'])
 const linkCard = ref<HTMLElement | null>(null)
 const divCard = ref<HTMLDivElement | null>(null)
 
-const doClick = (alias: string, value: object): void => {
+const doClick = (alias: string, value: object | undefined): void => {
   if (props.selected) {
     emit('onCardDeselected', alias, value)
   } else {
@@ -43,11 +48,19 @@ const doClick = (alias: string, value: object): void => {
   }
 }
 
-const onLinkEnter = (): void => {
-  linkCard.value?.classList.add('focus-border')
+const onCardEnter = (): void => {
+  divCard.value?.classList.add('card-enter')
 }
-const onLinkExit = (): void => {
-  linkCard.value?.classList.remove('focus-border')
+const onCardExit = (): void => {
+  divCard.value?.classList.remove('card-enter')
+  divCard.value?.classList.remove('dashcard-hover')
+}
+
+const onCardMouseOver = (): void => {
+  divCard.value?.classList.add('dashcard-hover')
+}
+const onCardMouseLeave = (): void => {
+  divCard.value?.classList.remove('dashcard-hover')
 }
 
 const isLargeCard = computed((): boolean => props.size == 'large')
@@ -78,18 +91,13 @@ a {
 }
 
 .icon--large {
-  font-size: 65px;
+  font-size: 75px;
 }
 
 .icon--small {
-  font-size: 25px;
+  font-size: 30px;
 }
 
-.ativado {
-  opacity: 1 !important;
-  background: linear-gradient(90deg, #4a5c70 0%, #128eb6 94.27%) !important;
-  color: #fff !important;
-}
 .dashcard {
   position: relative;
   display: flex;
@@ -108,8 +116,12 @@ a {
   padding: 5px;
 }
 
-.dashcard:hover,
-.dashcard:focus {
+.card-enter {
+  opacity: 1 !important;
+  background: linear-gradient(90deg, #e0e0e0 0%, #f5f5f5 94.27%) !important;
+  color: #fff !important;
+}
+.dashcard-hover {
   opacity: 1 !important;
   background: linear-gradient(90deg, #e0e0e0 0%, #f5f5f5 94.27%) !important;
   color: #fff !important;
@@ -158,28 +170,22 @@ a {
   font-size: 24px;
 }
 
-/* Card Grande Ativo */
+.dashcard .card_title--large {
+  font-size: 70px !important;
+  color: #0987b0 !important;
+}
+.dashcard .card_title--small {
+  font-size: 30px !important;
+  color: #0987b0 !important;
+}
+
 .dashcard_selected .card_title--large {
   font-weight: bold;
-  font-size: 55px !important;
+  font-size: 70px !important;
   color: rgb(255, 255, 0) !important;
 }
-
-/* Card Grande não Ativo */
-.dashcard .card_title--large {
-  font-size: 50px !important;
-  color: #0987b0 !important;
-}
-
-/* Card Pequeno não Ativo */
-.dashcard .card_title--small {
-  font-size: 24px !important;
-  color: #0987b0 !important;
-}
-
-/* Card Pequeno Ativo */
 .dashcard_selected .card_title--small {
-  font-size: 26px !important;
+  font-size: 30px !important;
   color: rgb(255, 255, 0) !important;
 }
 
@@ -195,7 +201,6 @@ a {
 .card_text {
   color: #000 !important;
   font-style: normal !important;
-  font-weight: 400 !important;
 }
 
 .card_text_selected {
@@ -203,30 +208,18 @@ a {
   font-style: normal !important;
 }
 
-.card_text_pendencias--large {
-  margin-top: 1em !important;
-  font-size: 20px !important;
-  padding-bottom: 1em !important;
-  padding-right: 6em !important;
-}
-
 .card_text--small {
-  margin-top: 4em !important;
-  font-size: 1em !important;
-  padding-bottom: 1em !important;
-  line-height: 18px !important;
+  margin-top: 3em !important;
   margin-right: 5px;
+  font-size: 18px;
+  padding-bottom: 1em !important;
 }
 
 .card_text--large {
-  margin-top: 8em !important;
-  font-size: 20px !important;
-  padding-bottom: 1em !important;
+  margin-top: 4em !important;
   margin-left: 10px;
-}
-
-.card_text:last-child {
-  margin-bottom: 0;
+  font-size: 30px !important;
+  padding-bottom: 1em !important;
 }
 
 .card--large {
@@ -234,120 +227,5 @@ a {
   margin-top: 0.7rem !important;
   margin-left: 0rem !important;
   color: #000 !important;
-}
-
-#imgCardMaior {
-  float: right;
-  filter: invert(100%);
-}
-
-#contadorCardMaior {
-  float: left;
-  font-size: 3.5em;
-}
-
-@media (min-width: 1343px) {
-  .card_text--small {
-    font-size: 16px !important;
-    line-height: 16px !important;
-  }
-}
-
-@media (max-width: 1343px) {
-  .card_title--small {
-    font-size: 6rem;
-  }
-
-  .card_text--small {
-    font-size: 14px !important;
-    line-height: 16px !important;
-  }
-}
-
-@media (max-width: 1150px) {
-  .card_title--small {
-    font-size: 2.5rem;
-  }
-  .card_text--small {
-    font-size: 14px !important;
-    line-height: 15px !important;
-  }
-}
-
-@media (max-width: 1024px) {
-  .card_body {
-    padding: 0.25rem 0.25rem;
-  }
-
-  .card_text--small {
-    font-size: 14px !important;
-    line-height: 14px !important;
-    margin-top: 55px !important;
-  }
-}
-
-@media (max-width: 992px) {
-  .card--large {
-    height: 60vh;
-  }
-  .card--small {
-    height: calc(20vh - 0.75rem);
-  }
-  .card_body {
-    padding: 0.5rem 0.5rem;
-  }
-  .card_title {
-    font-size: 24px;
-  }
-  .card_title--large {
-    font-size: 16rem;
-  }
-  .card_text--small {
-    font-size: 14px !important;
-    line-height: 14px !important;
-    margin-top: 60px !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .card_icon {
-    height: 50%;
-  }
-  .card--small .card_icon {
-    height: 20%;
-  }
-  .vertical .card_icon {
-    height: auto;
-    width: 15%;
-  }
-  .vertical .card_text {
-    font-size: 24px;
-  }
-  .card_text--small {
-    font-size: 16px !important;
-    line-height: 16px !important;
-    margin-top: 48px !important;
-  }
-}
-
-@media (max-width: 576px) {
-  .card_icon {
-    height: 50%;
-  }
-  .card--small .card_icon {
-    height: 20%;
-  }
-  .vertical .card_icon {
-    height: auto;
-    width: 15%;
-  }
-  .vertical .card_text {
-    font-size: 24px;
-  }
-  .card_text--small {
-    font-size: 16px !important;
-    line-height: 16px !important;
-    margin-top: 50px !important;
-  }
 }
 </style>

@@ -5,6 +5,25 @@
         <div class="row">
           <div
             class="col-12 col-xs-12 col-sm-6 col-md col-lg col-xl"
+            v-for="itemCard in getLargeCards()"
+            :key="itemCard.alias"
+          >
+            <app-dash-card
+              :alias="itemCard.alias"
+              :size="itemCard.size"
+              :text="itemCard.text"
+              :quantity="itemCard.quantity"
+              :iconName="itemCard.iconName"
+              :selected="itemCard.selected"
+              :value="itemCard.value"
+              @onCardSelected="selectCard"
+              @onCardDeselected="deselectCard"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-12 col-xs-12 col-sm-6 col-md col-lg col-xl"
             v-for="itemCard in getSmallCards()"
             :key="itemCard.alias"
           >
@@ -28,7 +47,8 @@
 <script setup lang="ts">
 import { useDashCard } from '@/composables/DashCardComposable'
 
-const { addCard, getSmallCards, selectCardByAlias, deselectCardByAlias } = useDashCard()
+const { addCard, getSmallCards, getLargeCards, selectCardByAlias, deselectCardByAlias } =
+  useDashCard()
 
 const selectCard = (alias: string, value: object): void => {
   selectCardByAlias(alias)
@@ -39,16 +59,16 @@ const deselectCard = (alias: string): void => {
 }
 addCard({
   alias: 'trEmElaboracao',
-  size: 'small',
+  size: 'large',
   text: 'Em elaboração',
   quantity: 1,
   selected: false,
   iconName: 'bi bi-pencil-square',
-  value: { teste: 'teste' },
+  /* value: { teste: 'teste' },*/
 })
 addCard({
   alias: 'trCancelados',
-  size: 'small',
+  size: 'large',
   text: 'Cancelados',
   quantity: 1,
   selected: false,
