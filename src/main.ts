@@ -1,10 +1,13 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import AppDashCard from './components/AppDashCard.vue'
+import AppNoteItem from './components/AppNoteItem.vue'
+import AppBadge from './components/AppBadge.vue'
 import AppDualSelectList from './components/AppDualSelectList.vue'
 import App from './App.vue'
 import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
+import Tooltip from 'primevue/tooltip'
 
 const app = createApp(App)
 
@@ -30,5 +33,8 @@ app.use(PrimeVue, {
   },
 })
 app.component('AppDashCard', AppDashCard)
+app.component('AppBadge', AppBadge)
+app.component('AppNoteItem', AppNoteItem)
 app.component('AppDualSelectList', AppDualSelectList)
+app.directive('tooltip', Tooltip)
 app.mount('#app')
