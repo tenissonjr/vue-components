@@ -57,7 +57,7 @@ const selectCard = (alias: string, value: object): void => {
 const deselectCard = (alias: string): void => {
   deselectCardByAlias(alias)
 }
-/*
+
 addCard({
   alias: 'trEmElaboracao',
   size: 'large',
@@ -75,7 +75,7 @@ addCard({
   selected: false,
   iconName: 'bi bi-x-circle',
 })
-*/
+
 addCard({
   alias: 'trEmAguardandoAnalise',
   size: 'small',

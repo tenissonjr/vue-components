@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Teste Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill-table-better@1/dist/quill-table-better.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill-table-better@1/dist/quill-table-better.js"></script>
+  </head>
+
+  <body>
+    <div id="root">Belezinha com tabela !</div>
+  </body>
+  <script>
+    Quill.register(
+      {
+        'modules/table-better': QuillTableBetter,
+      },
+      true,
+    )
+
+    const toolbarOptions = [['bold', 'italic', 'underline', 'strike'], ['table-better']]
+
+    const options = {
+      theme: 'snow',
+      modules: {
+        table: false,
+        toolbar: toolbarOptions,
+        'table-better': {
+          language: 'en_US',
+          menus: ['column', 'row', 'merge', 'table', 'cell', 'wrap', 'copy', 'delete'],
+          toolbarTable: true,
+        },
+        keyboard: {
+          bindings: QuillTableBetter.keyboardBindings,
+        },
+      },
+    }
+    const quill = new Quill('#root', options)
+  </script>
+</html>
