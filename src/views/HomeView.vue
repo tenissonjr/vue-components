@@ -12,9 +12,15 @@
         <text-editor />
       </div>
 
-      <div class="m-3 row">
+      <div class="m-3 row" v-if="false">
         <hystory-view />
       </div>
+
+      <div class="m-3 row" >
+        <tabs-view />
+      </div>
+
+
     </div>
   </div>
 </template>
@@ -24,4 +30,5 @@ import SelectProducts from './SelectProducts.vue'
 import NotesPreview from './NotesPreview.vue'
 import TextEditor from './TextEditor.vue'
 import HystoryView from './HystoryView.vue'
+import TabsView from './TabsView.vue'
 </script>

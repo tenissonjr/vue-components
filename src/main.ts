@@ -10,7 +10,9 @@ import App from './App.vue'
 import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
 import Tooltip from 'primevue/tooltip'
-
+import AppTabs from './components/AppTabs.vue'
+import AppTabButton from './components/AppTabButton.vue'
+import AppTabContent from './components/AppTabContent.vue'
 const app = createApp(App)
 
 app.use(createPinia())
@@ -44,8 +46,12 @@ app.component('AppBadge', AppBadge)
 app.component('AppNoteItem', AppNoteItem)
 app.component('AppDualSelectList', AppDualSelectList)
 app.component('AppHistory', AppHistory)
-app.directive('tooltip', Tooltip)
 app.component('AppTextEditor', AppTextEditor)
+app.component('AppTabs', AppTabs)
+app.component('AppTabButton', AppTabButton)
+app.component('AppTabContent', AppTabContent)
+
+app.directive('tooltip', Tooltip)
 app.mount('#app')
 
 import 'primeicons/primeicons.css'
