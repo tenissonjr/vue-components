@@ -13,6 +13,7 @@ import Tooltip from 'primevue/tooltip'
 import AppTabs from './components/AppTabs.vue'
 import AppTabButton from './components/AppTabButton.vue'
 import AppTabContent from './components/AppTabContent.vue'
+import AppMultiSelect from './components/AppMultiSelect.vue'
 const app = createApp(App)
 
 app.use(createPinia())
@@ -50,6 +51,7 @@ app.component('AppTextEditor', AppTextEditor)
 app.component('AppTabs', AppTabs)
 app.component('AppTabButton', AppTabButton)
 app.component('AppTabContent', AppTabContent)
+app.component('AppMultiSelect', AppMultiSelect)
 
 app.directive('tooltip', Tooltip)
 app.mount('#app')

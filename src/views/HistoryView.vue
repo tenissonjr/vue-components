@@ -7,7 +7,7 @@ import type { IHistory } from '@/types/IHistory'
 const history: IHistory = {
   dataKey: '100',
   align: 'left',
-  layout: 'vertical',
+  layout: 'horizontal',
   events: [
     {
       status: 'Em elaboração',

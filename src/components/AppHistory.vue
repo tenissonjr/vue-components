@@ -1,5 +1,5 @@
 <template>
-  <Timeline :value="props.events" :align="props.align">
+  <Timeline :value="props.events" :layout="props.layout" :align="props.align">
     <template #marker="slotProps">
       <span
         class="circle-icon"
