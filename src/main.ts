@@ -14,6 +14,9 @@ import AppTabs from './components/AppTabs.vue'
 import AppTabButton from './components/AppTabButton.vue'
 import AppTabContent from './components/AppTabContent.vue'
 import AppMultiSelect from './components/AppMultiSelect.vue'
+import AppStepper from './components/AppStepper.vue'
+import AppStep from './components/AppStep.vue'
+import AppStepPanel from './components/AppStepPanel.vue'
 const app = createApp(App)
 
 app.use(createPinia())
@@ -52,6 +55,9 @@ app.component('AppTabs', AppTabs)
 app.component('AppTabButton', AppTabButton)
 app.component('AppTabContent', AppTabContent)
 app.component('AppMultiSelect', AppMultiSelect)
+app.component('AppStepper', AppStepper)
+app.component('AppStepPanel', AppStepPanel)
+app.component('AppStep', AppStep)
 
 app.directive('tooltip', Tooltip)
 app.mount('#app')

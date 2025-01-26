@@ -9,6 +9,8 @@
     :showSourceControls="props.showSourceControls"
     :showTargetControls="props.showTargetControls"
     :sourceListProps="{ ariaLabel: 'Available Items' }"
+    @move-to-source="doMoveToSource"
+    @move-all-to-source="doMoveAllToSource"
   >
     <template v-if="props.sourceheader" #sourceheader>
       <span v-html="props.sourceheader"></span>
@@ -66,7 +68,17 @@ const props = defineProps({
 })
 
 const doModelUpdate = (value: unknown[][]): void => {
-  emit('onModelUpdated', value)
+  // emit('onModelUpdated', value)
+}
+const doMoveToSource = (value: unknown): void => {
+  console.log('doMoveToSource', value)
+  console.log('model[0]', model.value[0])
+  console.log('model[1]', model.value[1].length)
+}
+const doMoveAllToSource = (value: unknown): void => {
+  console.log('doMoveAllToSource', value)
+  console.log('model[0]', model.value[0])
+  console.log('model[1]', model.value[1].length)
 }
 </script>
 <style scoped>
