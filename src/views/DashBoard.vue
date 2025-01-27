@@ -11,8 +11,8 @@
             <app-dash-card
               :alias="itemCard.alias"
               :size="itemCard.size"
-              :text="itemCard.text"
-              :quantity="itemCard.quantity"
+              :legend="itemCard.legend"
+              :info="itemCard.info"
               :iconName="itemCard.iconName"
               :selected="itemCard.selected"
               :value="itemCard.value"
@@ -30,8 +30,8 @@
             <app-dash-card
               :alias="itemCard.alias"
               :size="itemCard.size"
-              :text="itemCard.text"
-              :quantity="itemCard.quantity"
+              :legend="itemCard.legend"
+              :info="itemCard.info"
               :iconName="itemCard.iconName"
               :selected="itemCard.selected"
               :value="itemCard.value"
@@ -61,8 +61,8 @@ const deselectCard = (alias: string): void => {
 addCard({
   alias: 'trEmElaboracao',
   size: 'large',
-  text: 'Em elaboração',
-  quantity: 1,
+  legend: 'Em elaboração',
+  info: '1',
   selected: false,
   iconName: 'bi bi-pencil-square',
   // value: { teste: 'teste' },
@@ -70,8 +70,8 @@ addCard({
 addCard({
   alias: 'trCancelados',
   size: 'large',
-  text: 'Cancelados',
-  quantity: 1,
+  legend: 'Cancelados',
+  info: '1',
   selected: false,
   iconName: 'bi bi-x-circle',
 })
@@ -79,40 +79,40 @@ addCard({
 addCard({
   alias: 'trEmAguardandoAnalise',
   size: 'small',
-  text: 'Aguardando análise',
-  quantity: 1,
+  legend: 'Aguardando análise',
+  info: '1',
   selected: false,
   iconName: 'bi bi-hourglass-split',
 })
 addCard({
   alias: 'trEmAnalise',
   size: 'small',
-  text: 'Em análise',
-  quantity: 2,
+  legend: 'Em análise',
+  info: '2',
   selected: false,
   iconName: 'bi bi-zoom-in',
 })
 addCard({
   alias: 'trEmAguardandoRetificacao',
   size: 'small',
-  text: 'Aguardando retificação',
-  quantity: 2,
+  legend: 'Aguardando retificação',
+  info: '2',
   selected: false,
   iconName: 'bi bi-exclamation-circle',
 })
 addCard({
   alias: 'trConcluidos',
   size: 'small',
-  text: 'Concluídos',
-  quantity: 14,
+  legend: 'Concluídos',
+  info: '14',
   selected: false,
   iconName: 'bi bi-check-circle',
 })
 addCard({
   alias: 'trsPublicados',
   size: 'small',
-  text: 'Publicados',
-  quantity: 11,
+  legend: 'Publicados',
+  info: '11',
   selected: false,
   iconName: 'bi bi-newspaper',
 })

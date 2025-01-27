@@ -1,31 +1,17 @@
 <template>
-  <div
-    @click="doClick(props.alias, props.value)"
-    @mouseover="onCardMouseOver"
-    @mouseleave="onCardMouseLeave"
-    @blur="onCardExit"
-    :aria-describedby="alias"
-  >
-    <div ref="divCard" :class="[sizeCardClass, colorCardClass]">
+  <div @mouseover="onCardMouseOver" @mouseleave="onCardMouseLeave" @blur="onCardExit" :aria-describedby="alias">
+    <div @click="doClick()" ref="divCard" :class="[sizeCardClass, colorCardClass]">
       <div class="card_body">
         <div class="card_quantity" :class="quantityClass">
-          {{ quantity }}
+          {{ info }}
         </div>
         <div class="card_icon">
           <i class="icon" :class="[iconClass, iconName]"></i>
         </div>
       </div>
       <div v-bind:class="sizeTextClass">
-        <a
-          ref="linkCard"
-          tabindex="0"
-          href="#"
-          :class="colorTextClass"
-          @focus="onCardEnter"
-          @blur="onCardExit"
-        >
-          <span :id="alias"><span v-html="text"></span></span
-        ></a>
+        <a ref="linkCard" tabindex="0" href="#" :class="colorTextClass" @focus="onCardEnter" @blur="onCardExit">
+          <span :id="alias"><span v-html="legend"></span></span></a>
       </div>
     </div>
   </div>
@@ -40,11 +26,12 @@ const emit = defineEmits(['onCardSelected', 'onCardDeselected'])
 const linkCard = ref<HTMLElement | null>(null)
 const divCard = ref<HTMLDivElement | null>(null)
 
-const doClick = (alias: string, value: object | undefined): void => {
+const doClick = (): void => {
+  //alert(props.alias)
   if (props.selected) {
-    emit('onCardDeselected', alias, value)
+    emit('onCardDeselected', props.alias, props.value)
   } else {
-    emit('onCardSelected', alias, value)
+    emit('onCardSelected', props.alias, props.value)
   }
 }
 
@@ -82,10 +69,12 @@ a {
   text-decoration: none;
   color: #000 !important;
 }
+
 .focus-border {
   outline: none;
   border-bottom: 2px dotted#8daee9;
 }
+
 .icon {
   color: #8daee9;
 }
@@ -121,6 +110,7 @@ a {
   background: linear-gradient(90deg, #e0e0e0 0%, #f5f5f5 94.27%) !important;
   color: #fff !important;
 }
+
 .dashcard-hover {
   opacity: 1 !important;
   background: linear-gradient(90deg, #e0e0e0 0%, #f5f5f5 94.27%) !important;
@@ -174,6 +164,7 @@ a {
   font-size: 70px !important;
   color: #0987b0 !important;
 }
+
 .dashcard .card_title--small {
   font-size: 30px !important;
   color: #0987b0 !important;
@@ -184,6 +175,7 @@ a {
   font-size: 70px !important;
   color: rgb(255, 255, 0) !important;
 }
+
 .dashcard_selected .card_title--small {
   font-size: 30px !important;
   color: rgb(255, 255, 0) !important;

@@ -4,11 +4,13 @@
       <div class="m-3 row" v-if="false">
         <notes-preview />
       </div>
-      <dash-board v-if="false" />
+      <div class="m-3 row" v-if="false">
+        <dash-board />
+      </div>
+
       <div class="m-3 row" v-if="true">
         <steps-view />
       </div>
-
       <div class="m-3 row">
         <select-products v-if="false" />
       </div>
