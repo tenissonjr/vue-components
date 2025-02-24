@@ -1,31 +1,30 @@
 <template>
   <div class="container-fluid fundo">
-    <div class="row justify-content-md-center">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-10">
-        <div class="row">
-          <div class="col-12 col-xs-12 col-sm-6 col-md col-lg col-xl" v-for="itemCard in getLargeCards()"
-            :key="itemCard.alias">
-            <app-dash-card :alias="itemCard.alias" :size="itemCard.size" :legend="itemCard.legend" :info="itemCard.info"
-              :iconName="itemCard.iconName" :selected="itemCard.selected" :value="itemCard.value"
-              @onCardSelected="selectCard" @onCardDeselected="deselectCard" />
+    <div class="col-5">
+            Selecione o tipo de Modelo de Termo de Referência
+            <div class="row">
+
+            <div class="col-12 " v-for="itemCard in getSmallCards()" :key="itemCard.alias">
+              <app-dash-card :alias="itemCard.alias" :size="itemCard.size" :legend="itemCard.legend" :info="itemCard.info"
+                :iconName="itemCard.iconName" :selected="itemCard.selected" :value="itemCard.value"
+                @onCardSelected="selectCard" @onCardDeselected="deselectCard" />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-xs-12 col-sm-6 col-md col-lg col-xl" v-for="itemCard in getSmallCards()"
-            :key="itemCard.alias">
-            <app-dash-card :alias="itemCard.alias" :size="itemCard.size" :legend="itemCard.legend" :info="itemCard.info"
-              :iconName="itemCard.iconName" :selected="itemCard.selected" :value="itemCard.value"
-              @onCardSelected="selectCard" @onCardDeselected="deselectCard" />
-          </div>
-        </div>
-      </div>
     </div>
+    <div class="col-7">
+            ???????
+    </div>
+
   </div>
+
+
+
+
 </template>
 <script setup lang="ts">
 import { useDashCard } from '@/composables/DashCardComposable'
 
-const { addCard, getSmallCards, getLargeCards, selectCardByAlias, deselectCardByAlias } =
+const { addCard, getSmallCards,  selectCardByAlias, deselectCardByAlias } =
   useDashCard()
 
 const selectCard = (alias: string, value: object): void => {
