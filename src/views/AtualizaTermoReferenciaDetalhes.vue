@@ -27,7 +27,7 @@
             <dt>
               <h6>Situação</h6>
             </dt>
-            <dd> <app-tag :text="termoReferencia.situacao" /></dd>
+            <dd>{{ termoReferencia.situacao }}</dd>
           </dl>
         </div>
 
@@ -40,28 +40,11 @@
             <dd> {{ termoReferencia.descricao }}</dd>
           </dl>
         </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">
-          <app-drop-down-actions :items="[
-            {
-              label: 'Detalhar Termo de Referência',
-              ariaLabel: `Detalhar Termo de Referência ${termoReferencia.descricao}`,
-            },
 
-            {
-              label: 'Alterar Termo de Referência',
-              ariaLabel: `Alterar Termo de Referência ${termoReferencia.descricao}`,
-            },
-            {
-              label: 'Excluir de Termo de Referência',
-              ariaLabel: `Excluir Termo de Referência ${termoReferencia.descricao}`,
-            },
-
-          ]" />
-        </div>
 
       </div>
     </div>
-    <div class="row">
+    <div v-if="false" class="row">
       <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
         <dl>
           <dt>
@@ -106,7 +89,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { ITermoReferenciaDTO } from '@/modules/termoreferencia/types/ITermoReferenciaDTO'
+import type { ITermoReferenciaDTO } from '@/views/types//ITermoReferenciaDTO'
 
 
 defineProps<{
@@ -117,7 +100,6 @@ defineProps<{
 
 </script>
 <style scoped>
-
 dt {
   color: rgb(95, 90, 90);
 }
@@ -133,7 +115,4 @@ dt {
 div {
   margin: 0.5rem 0;
 }
-
-
-
 </style>

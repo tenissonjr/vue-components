@@ -32,8 +32,12 @@
           placeholder="Select Cities" :maxSelectedLabels="3" />
       </div>
 
+      <div class="m-3 row" v-if="true">
+        <atualizar-termo-referencia />
+      </div>
 
-      <select-view />
+
+
 
     </div>
   </div>
@@ -48,6 +52,7 @@ import HystoryView from './HistoryView.vue'
 import TabsView from './TabsView.vue'
 import StepsView from './StepsView.vue'
 import SelectView from './SelectView.vue'
+import AtualizarTermoReferencia from './AtualizarTermoReferencia.vue'
 
 const selectedCities = ref()
 const cities = ref([
