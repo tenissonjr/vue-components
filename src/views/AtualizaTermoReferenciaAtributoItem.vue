@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-mutating-props -->
 <template>
   <transition name="fade">
     <div class="container" v-if="atributoTermoReferenciaDTO">

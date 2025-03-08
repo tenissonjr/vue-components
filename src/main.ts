@@ -17,6 +17,7 @@ import AppMultiSelect from './components/AppMultiSelect.vue'
 import AppStepper from './components/AppStepper.vue'
 import AppStep from './components/AppStep.vue'
 import AppStepPanel from './components/AppStepPanel.vue'
+import AppCard from './components/AppCard.vue'
 const app = createApp(App)
 
 app.use(createPinia())
@@ -58,6 +59,7 @@ app.component('AppMultiSelect', AppMultiSelect)
 app.component('AppStepper', AppStepper)
 app.component('AppStepPanel', AppStepPanel)
 app.component('AppStep', AppStep)
+app.component('AppCard', AppCard)
 
 app.directive('tooltip', Tooltip)
 app.mount('#app')
