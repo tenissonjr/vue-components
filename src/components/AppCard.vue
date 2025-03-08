@@ -18,8 +18,8 @@ defineProps({
 .card {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  margin: 1rem auto;
-  width: 98%;
+  margin: 0.5rem auto;
+  width: 100%;
   overflow-y: auto;
 }
 </style>
