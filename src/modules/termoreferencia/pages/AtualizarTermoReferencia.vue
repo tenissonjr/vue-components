@@ -1,33 +1,31 @@
 <template>
   <h1>Atualizar Termo de Referência</h1>
-
   <div class="container">
     <div class="row">
       <div class="col-12">
         <app-card cardHeight="70px">
-          <atualiza-termo-referencia-detalhes :termoReferencia="exibicaoTermoReferencia.termoReferencia" />
+          <atualiza-termo-referencia-detalhes />
         </app-card>
       </div>
     </div>
     <div class="row">
       <div class="col-4">
         <app-card cardHeight="600px">
-          <atualiza-termo-referencia-lista-grupos :gruposTermoReferencia="exibicaoTermoReferencia.grupos"
-            @onSelected="selecionarGrupo" />
+          <atualiza-termo-referencia-lista-grupos />
         </app-card>
       </div>
       <div class="col-8">
         <app-card cardHeight="600px">
           <div class="navigation-buttons">
-            <button @click="irParaGrupoAnterior" :disabled="isPrimeiroGrupo" class="previous-button">
+            <button @click="termoReferenciaStore.irParaGrupoAnterior" :disabled="termoReferenciaStore.isPrimeiroGrupo" class="previous-button">
               &laquo; Anterior
             </button>
             <atualiza-termo-referencia-status />
-            <button @click="irParaProximoGrupo" :disabled="isUltimoGrupo" class="next-button">
+            <button @click="termoReferenciaStore.irParaProximoGrupo" :disabled="termoReferenciaStore.isUltimoGrupo" class="next-button">
               Próximo &raquo;
             </button>
           </div>
-          <atualiza-termo-referencia-grupo :grupoTermoReferenciaDTO="grupoSelecionadoTermoReferencia" />
+          <atualiza-termo-referencia-grupo />
         </app-card>
       </div>
     </div>
@@ -41,48 +39,15 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-
-import type { IExibicaoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IExibicaoTermoReferenciaDTO';
-import exemploTermoReferencia from '@/modules/termoreferencia/types/IExibicaoTermoReferenciaDTO';
-import type { IGrupoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IGrupoTermoReferenciaDTO';
 import AtualizaTermoReferenciaDetalhes from '@/modules/termoreferencia/components/AtualizaTermoReferenciaDetalhes.vue';
-import AtualizaTermoReferenciaListaGrupos from '@/modules/termoreferencia/components/AtualizaTermoReferenciaListaGrupos.vue';
 import AtualizaTermoReferenciaGrupo from '@/modules/termoreferencia/components/AtualizaTermoReferenciaGrupo.vue';
+import AtualizaTermoReferenciaListaGrupos from '@/modules/termoreferencia/components/AtualizaTermoReferenciaListaGrupos.vue';
 import AtualizaTermoReferenciaStatus from '@/modules/termoreferencia/components/AtualizaTermoReferenciaStatus.vue';
-const exibicaoTermoReferencia = ref<IExibicaoTermoReferenciaDTO>(exemploTermoReferencia)
+import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
 
-const grupoSelecionadoTermoReferencia = ref<IGrupoTermoReferenciaDTO>({
-  descricao: '',
-  atributos: []
-})
+const termoReferenciaStore = useTermoReferenciaStore();
 
-// Inicializa grupoSelecionadoTermoReferencia com o primeiro grupo de exibicaoTermoReferencia.grupos
-if (exibicaoTermoReferencia.value.grupos.length > 0) {
-  grupoSelecionadoTermoReferencia.value = exibicaoTermoReferencia.value.grupos[0];
-}
 
-const selecionarGrupo = (grupoSelected: IGrupoTermoReferenciaDTO) => {
-  grupoSelecionadoTermoReferencia.value = grupoSelected;
-}
-const indiceGrupoCorrente = computed(() => {
-  return exibicaoTermoReferencia.value.grupos.findIndex(grupo => grupo === grupoSelecionadoTermoReferencia.value);
-});
-
-const isPrimeiroGrupo = computed(() => indiceGrupoCorrente.value === 0);
-const isUltimoGrupo = computed(() => indiceGrupoCorrente.value === exibicaoTermoReferencia.value.grupos.length - 1);
-
-const irParaGrupoAnterior = () => {
-  if (indiceGrupoCorrente.value > 0) {
-    grupoSelecionadoTermoReferencia.value = exibicaoTermoReferencia.value.grupos[indiceGrupoCorrente.value - 1];
-  }
-};
-
-const irParaProximoGrupo = () => {
-  if (indiceGrupoCorrente.value < exibicaoTermoReferencia.value.grupos.length - 1) {
-    grupoSelecionadoTermoReferencia.value = exibicaoTermoReferencia.value.grupos[indiceGrupoCorrente.value + 1];
-  }
-};
 </script>
 <style scoped>
 .navigation-buttons {

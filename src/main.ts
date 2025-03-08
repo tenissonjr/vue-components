@@ -65,3 +65,5 @@ app.component('AppCard', AppCard)
 
 app.directive('tooltip', Tooltip)
 app.mount('#app')
+
+import '@assets/primevue-adapter.css'

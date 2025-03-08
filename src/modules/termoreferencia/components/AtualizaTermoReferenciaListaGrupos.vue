@@ -23,7 +23,7 @@
             </tr>
             <tr v-for="grupo in filteredGrupos" :key="grupo.descricao">
               <td>
-                <a href="#" @click="handleClick(grupo)">{{ grupo.descricao }}</a>
+                <a href="#" @click="onSelectGrupo(grupo)">{{ grupo.descricao }}</a>
               </td>
               <td><grupo-termo-referencia-badges :grupoTermoReferencia="grupo" /></td>
             </tr>
@@ -35,21 +35,22 @@
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { storeToRefs } from 'pinia'
 import type { IGrupoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IGrupoTermoReferenciaDTO'
 import GrupoTermoReferenciaBadges from '@/modules/termoreferencia/components/GrupoTermoReferenciaBadges.vue'
 
-const emit = defineEmits(['onSelected'])
+import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
+
+const termoReferenciaStore = useTermoReferenciaStore();
+const { exibicaoTermoReferencia } = storeToRefs(termoReferenciaStore)
 
 const pesquisa = ref('');
 const situacao = ref('');
 
-const props = defineProps<{
-  gruposTermoReferencia: IGrupoTermoReferenciaDTO[]
-}>()
 
 const filteredGrupos = computed(() => {
   const searchTerm = pesquisa.value.toLowerCase().trim();
-  return props.gruposTermoReferencia.filter(grupo => {
+  return exibicaoTermoReferencia.value.grupos.filter(grupo => {
     const matchesSearchTerm = grupo.descricao.toLowerCase().includes(searchTerm);
     const matchesSituacao = situacao.value === '' || (
       situacao.value === 'informados' && grupo.atributos.every(attr => attr.resposta && attr.resposta.trim() !== '')
@@ -60,9 +61,9 @@ const filteredGrupos = computed(() => {
   });
 });
 
-const handleClick = (grupo: IGrupoTermoReferenciaDTO) => {
-  emit('onSelected', grupo)
-}
+const onSelectGrupo = (grupo: IGrupoTermoReferenciaDTO) => {
+  termoReferenciaStore.selecionarGrupo(grupo);
+};
 </script>
 <style scoped>
 .container {

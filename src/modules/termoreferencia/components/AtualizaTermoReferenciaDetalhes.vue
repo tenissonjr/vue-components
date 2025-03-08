@@ -6,7 +6,7 @@
           <dt>
             <h6>Processo</h6>
           </dt>
-          <dd> {{ termoReferencia.processo }}</dd>
+          <dd> {{ exibicaoTermoReferencia.termoReferencia.processo }}</dd>
         </dl>
       </div>
 
@@ -15,7 +15,7 @@
           <dt>
             <h6>Número</h6>
           </dt>
-          <dd><span data-testid="termoReferenciaNumero">{{ termoReferencia.numero }}</span></dd>
+          <dd><span data-testid="termoReferenciaNumero">{{ exibicaoTermoReferencia.termoReferencia.numero }}</span></dd>
         </dl>
       </div>
 
@@ -25,7 +25,7 @@
           <dt>
             <h6>Situação</h6>
           </dt>
-          <dd>{{ termoReferencia.situacao }}</dd>
+          <dd>{{ exibicaoTermoReferencia.termoReferencia.situacao }}</dd>
         </dl>
       </div>
 
@@ -35,7 +35,7 @@
           <dt>
             <h6>Descrição</h6>
           </dt>
-          <dd> {{ termoReferencia.descricao }}</dd>
+          <dd> {{ exibicaoTermoReferencia.termoReferencia.descricao }}</dd>
         </dl>
       </div>
 
@@ -48,7 +48,7 @@
         <dt>
           <h6>Unidade</h6>
         </dt>
-        <dd> {{ termoReferencia.unidade }}</dd>
+        <dd> {{ exibicaoTermoReferencia.termoReferencia.unidade }}</dd>
       </dl>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -56,7 +56,7 @@
         <dt>
           <h6>Responsável</h6>
         </dt>
-        <dd> {{ termoReferencia.responsavel }}</dd>
+        <dd> {{ exibicaoTermoReferencia.termoReferencia.responsavel }}</dd>
       </dl>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -64,7 +64,7 @@
         <dt>
           <h6>Finalidade</h6>
         </dt>
-        <dd> {{ termoReferencia.finalidade }}</dd>
+        <dd> {{ exibicaoTermoReferencia.termoReferencia.finalidade }}</dd>
       </dl>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -72,7 +72,7 @@
         <dt>
           <h6>Dt.Criação</h6>
         </dt>
-        <dd> {{ termoReferencia.dataCriacao }}</dd>
+        <dd> {{ exibicaoTermoReferencia.termoReferencia.dataCriacao }}</dd>
       </dl>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -80,19 +80,18 @@
         <dt>
           <h6>Versão</h6>
         </dt>
-        <dd> {{ termoReferencia.versao }}</dd>
+        <dd> {{ exibicaoTermoReferencia.termoReferencia.versao }}</dd>
       </dl>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import type { ITermoReferenciaDTO } from '@/modules/termoreferencia/types/ITermoReferenciaDTO'
+import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
 
-
-defineProps<{
-  termoReferencia: ITermoReferenciaDTO
-}>()
-
+const termoReferenciaStore = useTermoReferenciaStore();
+const { exibicaoTermoReferencia } = storeToRefs(termoReferenciaStore)
 
 
 </script>
