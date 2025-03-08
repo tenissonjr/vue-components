@@ -5,7 +5,7 @@
   </template>
 </template>
 <script setup lang="ts">
-import type { IGrupoTermoReferenciaDTO } from '@/views/types/IGrupoTermoReferenciaDTO';
+import type { IGrupoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IGrupoTermoReferenciaDTO';
 import AtualizaTermoReferenciaAtributoItem from './AtualizaTermoReferenciaAtributoItem.vue';
 defineProps<{
   grupoTermoReferenciaDTO: IGrupoTermoReferenciaDTO,

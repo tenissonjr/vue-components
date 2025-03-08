@@ -35,8 +35,8 @@
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import type { IGrupoTermoReferenciaDTO } from '@/views/types/IGrupoTermoReferenciaDTO'
-import GrupoTermoReferenciaBadges from '@/views/GrupoTermoReferenciaBadges.vue'
+import type { IGrupoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IGrupoTermoReferenciaDTO'
+import GrupoTermoReferenciaBadges from '@/modules/termoreferencia/components/GrupoTermoReferenciaBadges.vue'
 
 const emit = defineEmits(['onSelected'])
 

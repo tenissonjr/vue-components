@@ -19,7 +19,7 @@
 
 </template>
 <script setup lang="ts">
-import type { IAtributoTermoReferenciaDTO } from '@/views/types/IAtributoTermoReferenciaDTO';
+import type { IAtributoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IAtributoTermoReferenciaDTO';
 import AnotacoesAtributoTermoReferencia from './AnotacoesAtributoTermoReferencia.vue';
 
 defineProps<{

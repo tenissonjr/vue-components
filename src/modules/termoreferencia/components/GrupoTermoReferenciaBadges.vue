@@ -5,7 +5,7 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { IGrupoTermoReferenciaDTO } from '@/views/types/IGrupoTermoReferenciaDTO';
+import type { IGrupoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IGrupoTermoReferenciaDTO';
 import Badge from 'primevue/badge';
 
 const props = defineProps<{

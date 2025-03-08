@@ -43,13 +43,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 
-import type { IExibicaoTermoReferenciaDTO } from '@/views/types/IExibicaoTermoReferenciaDTO';
-import exemploTermoReferencia from '@/views/types/IExibicaoTermoReferenciaDTO';
-import type { IGrupoTermoReferenciaDTO } from '@/views/types/IGrupoTermoReferenciaDTO';
-import AtualizaTermoReferenciaDetalhes from './AtualizaTermoReferenciaDetalhes.vue';
-import AtualizaTermoReferenciaListaGrupos from './AtualizaTermoReferenciaListaGrupos.vue';
-import AtualizaTermoReferenciaGrupo from './AtualizaTermoReferenciaGrupo.vue';
-import AtualizaTermoReferenciaStatus from './AtualizaTermoReferenciaStatus.vue';
+import type { IExibicaoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IExibicaoTermoReferenciaDTO';
+import exemploTermoReferencia from '@/modules/termoreferencia/types/IExibicaoTermoReferenciaDTO';
+import type { IGrupoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IGrupoTermoReferenciaDTO';
+import AtualizaTermoReferenciaDetalhes from '@/modules/termoreferencia/components/AtualizaTermoReferenciaDetalhes.vue';
+import AtualizaTermoReferenciaListaGrupos from '@/modules/termoreferencia/components/AtualizaTermoReferenciaListaGrupos.vue';
+import AtualizaTermoReferenciaGrupo from '@/modules/termoreferencia/components/AtualizaTermoReferenciaGrupo.vue';
+import AtualizaTermoReferenciaStatus from '@/modules/termoreferencia/components/AtualizaTermoReferenciaStatus.vue';
 const exibicaoTermoReferencia = ref<IExibicaoTermoReferenciaDTO>(exemploTermoReferencia)
 
 const grupoSelecionadoTermoReferencia = ref<IGrupoTermoReferenciaDTO>({

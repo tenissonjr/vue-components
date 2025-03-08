@@ -86,7 +86,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { ITermoReferenciaDTO } from '@/views/types//ITermoReferenciaDTO'
+import type { ITermoReferenciaDTO } from '@/modules/termoreferencia/types/ITermoReferenciaDTO'
 
 
 defineProps<{

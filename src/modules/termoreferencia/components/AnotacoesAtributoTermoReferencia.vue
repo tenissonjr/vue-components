@@ -3,7 +3,7 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { IAnotacaoAtributoTermoReferenciaDTO } from './types/IAnotacaoAtributoTermoReferenciaDTO';
+import type { IAnotacaoAtributoTermoReferenciaDTO } from '../types/IAnotacaoAtributoTermoReferenciaDTO';
 
 const props = defineProps<{
   anotacoes: IAnotacaoAtributoTermoReferenciaDTO[],

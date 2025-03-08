@@ -51,8 +51,7 @@ import TextEditor from './TextEditor.vue'
 import HystoryView from './HistoryView.vue'
 import TabsView from './TabsView.vue'
 import StepsView from './StepsView.vue'
-import SelectView from './SelectView.vue'
-import AtualizarTermoReferencia from './AtualizarTermoReferencia.vue'
+import AtualizarTermoReferencia from '@/modules/termoreferencia/pages/AtualizarTermoReferencia.vue'
 
 const selectedCities = ref()
 const cities = ref([
