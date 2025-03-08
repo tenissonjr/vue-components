@@ -1,15 +1,16 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
   <transition name="fade">
-    <div class="container" v-if="atributoTermoReferenciaDTO">
+    <div class="container" v-if="atributoTermoReferencia">
       <div class="row">
         <div class="col-12">
-          Atributos : {{ atributoTermoReferenciaDTO.descricao }}
+          <h5> {{ atributoTermoReferencia.descricao }} <anotacoes-atributo-termo-referencia
+              :anotacoes="atributoTermoReferencia.anotacoes" /></h5>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <app-text-editor v-model="atributoTermoReferenciaDTO.resposta" />
+          <app-text-editor v-model="atributoTermoReferencia.resposta" />
           <hr>
         </div>
       </div>
@@ -19,10 +20,10 @@
 </template>
 <script setup lang="ts">
 import type { IAtributoTermoReferenciaDTO } from '@/views/types/IAtributoTermoReferenciaDTO';
-
+import AnotacoesAtributoTermoReferencia from './AnotacoesAtributoTermoReferencia.vue';
 
 defineProps<{
-  atributoTermoReferenciaDTO: IAtributoTermoReferenciaDTO,
+  atributoTermoReferencia: IAtributoTermoReferenciaDTO,
 }>();
 
 </script>
@@ -33,10 +34,8 @@ defineProps<{
 }
 
 .fade-enter,
-.fade-leave-to
-
-/* .fade-leave-active in <2.1.8 */
-  {
+.fade-leave-to,
+.fade-leave-active {
   opacity: 0;
 }
 </style>

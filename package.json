@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.2.5",
+    "bootstrap-icons": "^1.11.3",
     "pinia": "^2.2.6",
     "primeicons": "^7.0.0",
     "primevue": "^4.2.5",

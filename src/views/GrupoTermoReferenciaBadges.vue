@@ -1,5 +1,5 @@
 <template>
-  <span class="badges-container">
+  <span class="badges-container" v-tooltip="{ value: mensagensErro }">
     <Badge :value="value" size="small" :severity="severity" />
   </span>
 </template>
@@ -31,6 +31,17 @@ const value = computed((): string => {
 const severity = computed(() => {
   return totalRespostasNaoNulasGrupo() > 0 ? 'danger' : 'success';
 });
+
+
+const mensagensErro = computed(() => {
+  return props.grupoTermoReferencia.atributos.map(atributo => {
+    if (!atributo.resposta || atributo.resposta.length === 0) {
+      return `O campo ${atributo.descricao} não foi preenchido`;
+    }
+    return '';
+  }).join('\n');
+});
+
 
 </script>
 <style scoped>

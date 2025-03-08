@@ -38,6 +38,18 @@ const exemploTermoReferencia: IExibicaoTermoReferenciaDTO = {
               autor: 'Sistema',
               dataCriacao: '2025-02-10T08:00:00Z',
             },
+            {
+              id: 102,
+              texto: 'Anotação 2',
+              autor: 'Maria Silva',
+              dataCriacao: '2025-02-10T08:01:00Z',
+            },
+            {
+              id: 103,
+              texto: 'Anotação 3',
+              autor: 'João Pereira',
+              dataCriacao: '2025-02-10T08:02:00Z',
+            },
           ],
         },
         {

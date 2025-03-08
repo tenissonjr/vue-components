@@ -1,6 +1,7 @@
 <template>
+  <h4 v-if="grupoTermoReferenciaDTO.atributos.length > 0">{{ grupoTermoReferenciaDTO.descricao }}</h4>
   <template v-for="atributo in grupoTermoReferenciaDTO.atributos" :key="atributo.id">
-    <atualiza-termo-referencia-atributo-item :atributoTermoReferenciaDTO="atributo" />
+    <atualiza-termo-referencia-atributo-item :atributoTermoReferencia="atributo" />
   </template>
 </template>
 <script setup lang="ts">
@@ -11,3 +12,9 @@ defineProps<{
 }>();
 
 </script>
+<style scoped>
+h4 {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+</style>

@@ -63,5 +63,3 @@ app.component('AppCard', AppCard)
 
 app.directive('tooltip', Tooltip)
 app.mount('#app')
-
-import 'primeicons/primeicons.css'
