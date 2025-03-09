@@ -18,12 +18,13 @@
       <div class="col-12">
         <table class="table table-striped">
           <tbody>
-            <tr v-if="filteredGrupos.length === 0">
+            <tr v-if="gruposFiltrados.length === 0">
               <td colspan="2" class="text-center">Nenhum atributo encontrado com os critérios informados</td>
             </tr>
-            <tr v-for="grupo in filteredGrupos" :key="grupo.descricao">
+            <tr v-for="grupo in gruposFiltrados" :key="grupo.descricao"
+              :class="{ 'selected': grupo.descricao === grupoSelecionadoTermoReferencia.descricao }">
               <td>
-                <a href="#" @click="onSelectGrupo(grupo)">{{ grupo.descricao }}</a>
+                <a href=" #" @click="onGrupoSelecionado(grupo)">{{ grupo.descricao }}</a>
               </td>
               <td><grupo-termo-referencia-badges :grupoTermoReferencia="grupo" /></td>
             </tr>
@@ -42,13 +43,13 @@ import GrupoTermoReferenciaBadges from '@/modules/termoreferencia/components/Gru
 import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
 
 const termoReferenciaStore = useTermoReferenciaStore();
-const { exibicaoTermoReferencia } = storeToRefs(termoReferenciaStore)
+const { exibicaoTermoReferencia, grupoSelecionadoTermoReferencia } = storeToRefs(termoReferenciaStore)
 
 const pesquisa = ref('');
 const situacao = ref('');
 
 
-const filteredGrupos = computed(() => {
+const gruposFiltrados = computed(() => {
   const searchTerm = pesquisa.value.toLowerCase().trim();
   return exibicaoTermoReferencia.value.grupos.filter(grupo => {
     const matchesSearchTerm = grupo.descricao.toLowerCase().includes(searchTerm);
@@ -61,7 +62,7 @@ const filteredGrupos = computed(() => {
   });
 });
 
-const onSelectGrupo = (grupo: IGrupoTermoReferenciaDTO) => {
+const onGrupoSelecionado = (grupo: IGrupoTermoReferenciaDTO) => {
   termoReferenciaStore.selecionarGrupo(grupo);
 };
 </script>
@@ -100,5 +101,12 @@ a {
 
 li {
   cursor: pointer;
+}
+
+.selected {
+  background-color: #d3d3d3;
+  /* Light gray background for selected row */
+  font-weight: bold;
+  /* Bold text for selected row */
 }
 </style>

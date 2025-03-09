@@ -21,6 +21,9 @@
 <script setup lang="ts">
 import type { IAtributoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IAtributoTermoReferenciaDTO';
 import AnotacoesAtributoTermoReferencia from './AnotacoesAtributoTermoReferencia.vue';
+import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
+
+const termoReferenciaStore = useTermoReferenciaStore();
 
 defineProps<{
   atributoTermoReferencia: IAtributoTermoReferenciaDTO,

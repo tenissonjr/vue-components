@@ -36,7 +36,7 @@ const severity = computed(() => {
 const mensagensErro = computed(() => {
   return props.grupoTermoReferencia.atributos.map(atributo => {
     if (!atributo.resposta || atributo.resposta.length === 0) {
-      return `O campo ${atributo.descricao} não foi preenchido`;
+      return `O campo "${atributo.descricao}" não foi informado.`;
     }
     return '';
   }).join('\n');

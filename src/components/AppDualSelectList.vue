@@ -1,17 +1,8 @@
 <template>
-  <PickList
-    v-model="model"
-    :dataKey="props.propertyId"
-    :responsive="true"
-    :striped="props.striped"
-    @update:modelValue="doModelUpdate"
-    :scrollHeight="props.height"
-    :showSourceControls="props.showSourceControls"
-    :showTargetControls="props.showTargetControls"
-    :sourceListProps="{ ariaLabel: 'Available Items' }"
-    @move-to-source="doMoveToSource"
-    @move-all-to-source="doMoveAllToSource"
-  >
+  <PickList v-model="model" :dataKey="props.propertyId" :responsive="true" :striped="props.striped"
+    @update:modelValue="doModelUpdate" :scrollHeight="props.height" :showSourceControls="props.showSourceControls"
+    :showTargetControls="props.showTargetControls" :sourceListProps="{ ariaLabel: 'Available Items' }"
+    @move-to-source="doMoveToSource" @move-all-to-source="doMoveAllToSource">
     <template v-if="props.sourceheader" #sourceheader>
       <span v-html="props.sourceheader"></span>
     </template>
@@ -71,14 +62,11 @@ const doModelUpdate = (value: unknown[][]): void => {
   // emit('onModelUpdated', value)
 }
 const doMoveToSource = (value: unknown): void => {
-  console.log('doMoveToSource', value)
-  console.log('model[0]', model.value[0])
-  console.log('model[1]', model.value[1].length)
+
 }
+
 const doMoveAllToSource = (value: unknown): void => {
-  console.log('doMoveAllToSource', value)
-  console.log('model[0]', model.value[0])
-  console.log('model[1]', model.value[1].length)
+
 }
 </script>
 <style scoped>
@@ -86,6 +74,7 @@ const doMoveAllToSource = (value: unknown): void => {
   background: var(--p-listbox-option-selected-background);
   color: var(--p-listbox-option-selected-color);
 }
+
 .p-listbox-striped li:nth-child(even of .p-listbox-option) {
   background: var(--p-listbox-option-striped-background);
 }

@@ -24,13 +24,11 @@ app.use(createPinia())
 app.use(PrimeVue, {
   theme: {
     preset: Aura,
-    /*
     options: {
       prefix: 'p',
       darkModeSelector: 'system',
       cssLayer: true,
     },
-    */
   },
 
   locale: {

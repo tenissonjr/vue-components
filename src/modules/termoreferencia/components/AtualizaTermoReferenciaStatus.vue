@@ -1,8 +1,12 @@
 <template>
-  Total de questionamentos respondidos : {{ value }} / {{ total }}
+  Total de questionamentos respondidos : {{ totalAtributosRespondidosRespondidosTermoReferencia }} / {{
+    totalAtributosTermoReferencia }}
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
-const value = ref(40);
-const total = ref(100);
+import { storeToRefs } from 'pinia';
+import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
+
+const termoReferenciaStore = useTermoReferenciaStore();
+const { totalAtributosTermoReferencia, totalAtributosRespondidosRespondidosTermoReferencia } = storeToRefs(termoReferenciaStore)
+
 </script>

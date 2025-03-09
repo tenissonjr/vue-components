@@ -11,634 +11,622 @@ const exemploTermoReferencia: IExibicaoTermoReferenciaDTO = {
   termoReferencia: {
     id: 12345,
     numero: 78901,
-    unidade: 'Secretaria de Tecnologia da Informação',
-    processo: '2025.00001.000123-45',
-    dataCriacao: '2025-03-07',
-    descricao: 'Aquisição de equipamentos de informática para modernização do parque tecnológico',
-    versao: '1.0',
-    sei: 9876543210,
-    finalidade: 'Substituição de equipamentos obsoletos e ampliação da capacidade computacional',
-    situacao: 'Em análise',
-    responsavel: 'Maria Silva (Diretora de TI)',
+    unidade: 'Departamento de Tecnologia da Informação',
+    processo: 'TI-2025/00123',
+    dataCriacao: '2025-02-15T14:30:00',
+    descricao: 'Aquisição de licenças de software para desenvolvimento',
+    versao: '1.3',
+    sei: 202500789,
+    finalidade: 'Modernização da infraestrutura de desenvolvimento',
+    situacao: 'Em andamento',
+    responsavel: 'Maria Silva',
   },
   grupos: [
     {
-      descricao: 'Identificação da Demanda',
+      descricao: 'Informações Básicas',
       atributos: [
         {
           id: 1,
-          descricao: 'Objeto da contratação',
-          resposta:
-            'Aquisição de computadores, notebooks e periféricos para modernização do parque tecnológico institucional',
+          descricao: 'Objeto da Contratação',
+          codTipoAtributo: 1,
+          idResposta: 101,
+          resposta: 'Aquisição de licenças de software para desenvolvimento de aplicações',
           anotacoes: [
             {
-              id: 101,
-              texto:
-                'Descreva de forma clara e objetiva o que será contratado, evitando termos técnicos desnecessários',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:00:00Z',
-            },
-            {
-              id: 102,
-              texto: 'Anotação 2',
-              autor: 'Maria Silva',
-              dataCriacao: '2025-02-10T08:01:00Z',
-            },
-            {
-              id: 103,
-              texto: 'Anotação 3',
-              autor: 'João Pereira',
-              dataCriacao: '2025-02-10T08:02:00Z',
-            },
-          ],
-        },
-        {
-          id: 2,
-          descricao: 'Justificativa da necessidade',
-          resposta:
-            'Os equipamentos atuais possuem mais de 6 anos de uso, apresentando falhas recorrentes e obsolescência tecnológica que compromete o desempenho das atividades institucionais',
-          anotacoes: [
-            {
-              id: 102,
-              texto:
-                'Fundamente a necessidade da contratação, demonstrando o alinhamento com os objetivos estratégicos da instituição',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:01:00Z',
-            },
-          ],
-        },
-      ],
-    },
-
-    {
-      descricao: 'Identificação do Objeto',
-      atributos: [
-        {
-          id: 1,
-          descricao: 'Objeto da contratação',
-          resposta:
-            'Aquisição de computadores, notebooks e periféricos para modernização do parque tecnológico institucional',
-          anotacoes: [
-            {
-              id: 101,
-              texto:
-                'Descreva de forma clara e objetiva o que será contratado, evitando termos técnicos desnecessários',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:00:00Z',
+              id: 10001,
+              autor: 'Carlos Andrade',
+              dataCriacao: '2025-02-16T09:15:00',
+              texto: 'Detalhar quais são os softwares específicos necessários',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Justificativa da Necessidade',
+      descricao: 'Justificativa',
       atributos: [
         {
           id: 2,
-          descricao: 'Justificativa da necessidade',
+          descricao: 'Motivação da Contratação',
+          codTipoAtributo: 2,
+          idResposta: 102,
           resposta:
-            'Os equipamentos atuais possuem mais de 6 anos de uso, apresentando falhas recorrentes e obsolescência tecnológica que compromete o desempenho das atividades institucionais',
+            'Necessidade de modernização das ferramentas de desenvolvimento utilizadas pela equipe',
           anotacoes: [
             {
-              id: 102,
-              texto:
-                'Fundamente a necessidade da contratação, demonstrando o alinhamento com os objetivos estratégicos da instituição',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:01:00Z',
+              id: 10002,
+              autor: 'Juliana Ferreira',
+              dataCriacao: '2025-02-16T10:20:00',
+              texto: 'Incluir dados estatísticos de produtividade',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Requisitos Técnicos',
+      descricao: 'Especificações Técnicas',
       atributos: [
         {
           id: 3,
-          descricao: 'Especificações técnicas',
-          resposta:
-            'Computadores: Processador de última geração, 16GB RAM, SSD 512GB, Monitor 24", Sistema operacional Windows 11 Pro. Notebooks: Processador de última geração, 16GB RAM, SSD 512GB, Tela 15.6", Sistema operacional Windows 11 Pro, Bateria com autonomia mínima de 8 horas',
+          descricao: 'Requisitos Mínimos',
+          codTipoAtributo: 1,
+          idResposta: 103,
+          resposta: 'Compatibilidade com sistemas operacionais Windows 11 e Linux Ubuntu 24.04',
           anotacoes: [
             {
-              id: 103,
-              texto:
-                'Especifique os requisitos técnicos detalhadamente, mas sem direcionar para marcas específicas',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:02:00Z',
+              id: 10003,
+              autor: 'Ricardo Mendes',
+              dataCriacao: '2025-02-16T11:45:00',
+              texto: 'Verificar necessidade de compatibilidade com MacOS',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Garantia e Suporte',
+      descricao: 'Cronograma',
       atributos: [
         {
           id: 4,
-          descricao: 'Condições de garantia',
-          resposta:
-            'Garantia on-site de 60 meses para todos os equipamentos, com tempo de resposta de até 8 horas úteis e resolução em até 48 horas úteis',
+          descricao: 'Prazo de Entrega',
+          codTipoAtributo: 3,
+          idResposta: 104,
+          resposta: '30 dias após a assinatura do contrato',
           anotacoes: [
             {
-              id: 104,
-              texto: 'Defina prazos de garantia e níveis de serviço esperados do fornecedor',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:03:00Z',
+              id: 10004,
+              autor: 'Ana Costa',
+              dataCriacao: '2025-02-17T08:30:00',
+              texto: 'Considerar possíveis atrasos devido à importação',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Metodologia de Estimativa',
+      descricao: 'Garantia',
       atributos: [
         {
           id: 5,
-          descricao: 'Metodologia de estimativa',
-          resposta:
-            'A estimativa foi baseada no quantitativo de estações de trabalho atuais com mais de 5 anos de uso (150 computadores e 75 notebooks), mais uma margem de 10% para expansão',
+          descricao: 'Período de Garantia',
+          codTipoAtributo: 3,
+          idResposta: 105,
+          resposta: '12 meses a partir da data de ativação',
           anotacoes: [
             {
-              id: 105,
-              texto:
-                'Explique como foi calculada a quantidade necessária de itens a serem adquiridos',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:04:00Z',
+              id: 10005,
+              autor: 'Fernando Gomes',
+              dataCriacao: '2025-02-17T09:45:00',
+              texto: 'Avaliar possibilidade de extensão para 24 meses',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Quantitativos',
+      descricao: 'Suporte',
       atributos: [
         {
           id: 6,
-          descricao: 'Quantitativos por item',
-          resposta:
-            'Computadores: 165 unidades; Notebooks: 83 unidades; Monitores adicionais: 50 unidades; Docking stations: 83 unidades',
+          descricao: 'Níveis de Atendimento',
+          codTipoAtributo: 2,
+          idResposta: 106,
+          resposta: 'Suporte 24/7 para incidentes críticos e 8/5 para demais ocorrências',
           anotacoes: [
             {
-              id: 106,
-              texto: 'Liste os quantitativos por item a ser adquirido',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:05:00Z',
+              id: 10006,
+              autor: 'Mariana Alves',
+              dataCriacao: '2025-02-17T14:20:00',
+              texto: 'Definir SLAs específicos para cada tipo de ocorrência',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Levantamento de Mercado',
+      descricao: 'Capacitação',
       atributos: [
         {
           id: 7,
-          descricao: 'Soluções disponíveis',
+          descricao: 'Treinamento',
+          codTipoAtributo: 1,
+          idResposta: 107,
           resposta:
-            'Foram identificadas três modalidades de aquisição: compra direta, leasing de equipamentos ou contratação de outsourcing. Após análise, a compra direta mostrou-se mais vantajosa considerando o ciclo de vida dos equipamentos (5 anos)',
+            'Treinamento presencial para 15 desenvolvedores, com carga horária mínima de 40 horas',
           anotacoes: [
             {
-              id: 107,
-              texto:
-                'Apresente as diferentes soluções disponíveis no mercado para atender à necessidade',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:06:00Z',
+              id: 10007,
+              autor: 'Pedro Santos',
+              dataCriacao: '2025-02-18T10:15:00',
+              texto: 'Considerar também opção de treinamento online',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Preços de Referência',
+      descricao: 'Documentação',
       atributos: [
         {
           id: 8,
-          descricao: 'Preços unitários',
-          resposta:
-            'Computadores: R$ 6.500,00 (unitário); Notebooks: R$ 7.800,00 (unitário); Monitores adicionais: R$ 1.200,00 (unitário); Docking stations: R$ 950,00 (unitário)',
+          descricao: 'Manuais Técnicos',
+          codTipoAtributo: 1,
+          idResposta: 108,
+          resposta: 'Fornecimento de manuais técnicos em português e inglês, em formato digital',
           anotacoes: [
             {
-              id: 108,
-              texto: 'Indique os preços de referência obtidos na pesquisa de mercado',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:07:00Z',
+              id: 10008,
+              autor: 'Luciana Martins',
+              dataCriacao: '2025-02-18T13:40:00',
+              texto: 'Solicitar também versões impressas dos principais manuais',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Solução Escolhida',
+      descricao: 'Licenciamento',
       atributos: [
         {
           id: 9,
-          descricao: 'Descrição da solução',
-          resposta:
-            'Aquisição direta de equipamentos de informática com garantia estendida de 60 meses, incluindo serviços de entrega, instalação e configuração',
+          descricao: 'Modelo de Licenciamento',
+          codTipoAtributo: 2,
+          idResposta: 109,
+          resposta: 'Licenças perpétuas com atualizações incluídas pelo período de 3 anos',
           anotacoes: [
             {
-              id: 109,
-              texto: 'Descreva a solução escolhida dentre as opções levantadas',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:08:00Z',
+              id: 10009,
+              autor: 'Rafael Oliveira',
+              dataCriacao: '2025-02-19T09:30:00',
+              texto: 'Comparar com modelo de assinatura anual',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Justificativa da Escolha',
+      descricao: 'Equipe Técnica',
       atributos: [
         {
           id: 10,
-          descricao: 'Motivação da escolha',
-          resposta:
-            'A compra direta apresentou melhor custo-benefício no horizonte de 5 anos, permitindo melhor controle patrimonial e segurança da informação, além de eliminar custos recorrentes de leasing ou outsourcing',
+          descricao: 'Qualificação da Equipe',
+          codTipoAtributo: 1,
+          idResposta: 110,
+          resposta: 'Equipe composta por profissionais certificados pelo fabricante do software',
           anotacoes: [
             {
-              id: 110,
-              texto:
-                'Justifique por que a solução escolhida é a mais adequada técnica e economicamente',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:09:00Z',
+              id: 10010,
+              autor: 'Camila Rodrigues',
+              dataCriacao: '2025-02-19T14:50:00',
+              texto: 'Especificar quais certificações são necessárias',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Método de Estimativa de Preços',
+      descricao: 'Pagamento',
       atributos: [
         {
           id: 11,
-          descricao: 'Metodologia utilizada',
+          descricao: 'Condições de Pagamento',
+          codTipoAtributo: 3,
+          idResposta: 111,
           resposta:
-            'Foram realizadas pesquisas em contratações similares no Painel de Preços, pesquisa com fornecedores e em sites especializados, conforme IN 73/2020',
+            'Pagamento em 3 parcelas: 30% na assinatura, 40% na entrega e 30% após homologação',
           anotacoes: [
             {
-              id: 111,
-              texto: 'Descreva a metodologia utilizada para estimativa de preços',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:10:00Z',
+              id: 10011,
+              autor: 'Gustavo Lima',
+              dataCriacao: '2025-02-20T08:20:00',
+              texto: 'Verificar possibilidade de pagamento único com desconto',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Valor Total Estimado',
+      descricao: 'Segurança',
       atributos: [
         {
           id: 12,
-          descricao: 'Valor global',
-          resposta:
-            'R$ 2.217.750,00 (dois milhões, duzentos e dezessete mil, setecentos e cinquenta reais)',
+          descricao: 'Requisitos de Segurança',
+          codTipoAtributo: 1,
+          idResposta: 112,
+          resposta: 'Conformidade com LGPD e padrões de segurança ISO 27001',
           anotacoes: [
             {
-              id: 112,
-              texto: 'Indique o valor total estimado da contratação',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:11:00Z',
+              id: 10012,
+              autor: 'Renata Sousa',
+              dataCriacao: '2025-02-20T11:30:00',
+              texto: 'Incluir necessidade de criptografia de dados em repouso',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Fonte de Recursos',
+      descricao: 'Integração',
       atributos: [
         {
           id: 13,
-          descricao: 'Dotação orçamentária',
-          resposta:
-            'Plano de Trabalho Anual - PTA 2025, Ação Orçamentária 2030 - Modernização da Infraestrutura Tecnológica',
+          descricao: 'Compatibilidade',
+          codTipoAtributo: 2,
+          idResposta: 113,
+          resposta: 'Integração com sistemas legados Oracle e SQL Server',
           anotacoes: [
             {
-              id: 113,
-              texto: 'Indique a fonte orçamentária para a contratação',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:12:00Z',
+              id: 10013,
+              autor: 'Alexandre Cardoso',
+              dataCriacao: '2025-02-20T15:40:00',
+              texto: 'Detalhar versões específicas dos bancos de dados',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Disponibilidade Orçamentária',
+      descricao: 'Ambiente',
       atributos: [
         {
           id: 14,
-          descricao: 'Confirmação de disponibilidade',
-          resposta:
-            'Disponibilidade confirmada pela Diretoria de Orçamento e Finanças conforme documento SEI nº 98765/2025',
+          descricao: 'Infraestrutura Necessária',
+          codTipoAtributo: 1,
+          idResposta: 114,
+          resposta: 'Ambiente virtualizado em nuvem privada com redundância geográfica',
           anotacoes: [
             {
-              id: 114,
-              texto: 'Informe se há disponibilidade orçamentária confirmada para a contratação',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:13:00Z',
+              id: 10014,
+              autor: 'Eduardo Pereira',
+              dataCriacao: '2025-02-21T09:15:00',
+              texto: 'Considerar também opção de infraestrutura híbrida',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Modalidade de Licitação',
+      descricao: 'Requisitos Legais',
       atributos: [
         {
           id: 15,
-          descricao: 'Forma de contratação',
-          resposta: 'Pregão Eletrônico por Sistema de Registro de Preços',
+          descricao: 'Conformidade Legal',
+          codTipoAtributo: 2,
+          idResposta: 115,
+          resposta: 'Atendimento a todas as normas vigentes estabelecidas pelo SISP',
           anotacoes: [
             {
-              id: 115,
-              texto: 'Indique a modalidade de licitação a ser adotada',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:14:00Z',
+              id: 10015,
+              autor: 'Carla Moreira',
+              dataCriacao: '2025-02-21T13:45:00',
+              texto: 'Incluir referência ao decreto nº 10.024/2019',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Critério de Julgamento',
+      descricao: 'Critérios de Aceitação',
       atributos: [
         {
           id: 16,
-          descricao: 'Tipo de julgamento',
-          resposta: 'Menor preço por grupo (computadores/notebooks/monitores/docking stations)',
+          descricao: 'Homologação',
+          codTipoAtributo: 3,
+          idResposta: 116,
+          resposta:
+            'Aprovação mediante testes de desempenho e funcionalidade em ambiente de homologação',
           anotacoes: [
             {
-              id: 116,
-              texto: 'Especifique o critério de julgamento das propostas',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:15:00Z',
+              id: 10016,
+              autor: 'Bruno Castro',
+              dataCriacao: '2025-02-22T10:20:00',
+              texto: 'Definir métricas específicas para aprovação nos testes',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Qualificação Técnica',
+      descricao: 'Sustentabilidade',
       atributos: [
         {
           id: 17,
-          descricao: 'Requisitos de habilitação',
-          resposta:
-            'Comprovação de fornecimento de pelo menos 50% do quantitativo a ser contratado, mediante atestados de capacidade técnica emitidos por pessoas jurídicas de direito público ou privado',
+          descricao: 'Critérios Ambientais',
+          codTipoAtributo: 1,
+          idResposta: 117,
+          resposta: 'Utilização de equipamentos com certificação de eficiência energética',
           anotacoes: [
             {
-              id: 117,
-              texto: 'Defina os requisitos de habilitação técnica para os fornecedores',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:16:00Z',
+              id: 10017,
+              autor: 'Patrícia Nunes',
+              dataCriacao: '2025-02-22T14:30:00',
+              texto: 'Adicionar requisitos de descarte responsável',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Certificações Exigidas',
+      descricao: 'Penalidades',
       atributos: [
         {
           id: 18,
-          descricao: 'Requisitos de certificação',
-          resposta:
-            'Certificação ISO 9001 para o fabricante dos equipamentos; Certificação EPEAT Gold para os equipamentos ofertados',
+          descricao: 'Multas e Sanções',
+          codTipoAtributo: 2,
+          idResposta: 118,
+          resposta: 'Aplicação de multa de 0,5% por dia de atraso, limitada a 10% do valor total',
           anotacoes: [
             {
-              id: 118,
-              texto: 'Liste as certificações necessárias para os equipamentos ou fornecedores',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:17:00Z',
+              id: 10018,
+              autor: 'Daniel Vieira',
+              dataCriacao: '2025-02-23T09:50:00',
+              texto: 'Incluir cláusulas para outros tipos de descumprimento',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Prazos de Entrega',
+      descricao: 'Propriedade Intelectual',
       atributos: [
         {
           id: 19,
-          descricao: 'Cronograma de entrega',
+          descricao: 'Direitos Autorais',
+          codTipoAtributo: 1,
+          idResposta: 119,
           resposta:
-            'Prazo máximo de 45 dias corridos após a emissão da ordem de fornecimento, podendo ser prorrogado mediante justificativa aceita pela Administração',
+            'Cessão total dos direitos sobre personalizações e desenvolvimentos específicos',
           anotacoes: [
             {
-              id: 119,
-              texto: 'Defina os prazos para entrega dos bens ou execução dos serviços',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:18:00Z',
+              id: 10019,
+              autor: 'Amanda Lopes',
+              dataCriacao: '2025-02-23T13:15:00',
+              texto: 'Esclarecer situação de componentes open source',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Procedimentos de Recebimento',
+      descricao: 'Auditoria',
       atributos: [
         {
           id: 20,
-          descricao: 'Etapas de recebimento',
-          resposta:
-            'Recebimento provisório: no ato da entrega, para posterior verificação de conformidade. Recebimento definitivo: em até 15 dias após o recebimento provisório, após verificação de qualidade e quantidade',
+          descricao: 'Registros de Auditoria',
+          codTipoAtributo: 2,
+          idResposta: 120,
+          resposta: 'Manutenção de logs detalhados de todas as operações por no mínimo 5 anos',
           anotacoes: [
             {
-              id: 120,
-              texto: 'Estabeleça as condições para recebimento provisório e definitivo do objeto',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:19:00Z',
+              id: 10020,
+              autor: 'Roberto Almeida',
+              dataCriacao: '2025-02-24T10:40:00',
+              texto: 'Definir procedimentos para exportação dos logs',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Equipe de Fiscalização',
+      descricao: 'Disponibilidade',
       atributos: [
         {
           id: 21,
-          descricao: 'Responsáveis designados',
+          descricao: 'Uptime Mínimo',
+          codTipoAtributo: 3,
+          idResposta: 121,
           resposta:
-            'Fiscal Técnico: João Pereira (Analista de TI); Fiscal Administrativo: Roberto Santos (Administrador); Gestor do Contrato: Ana Oliveira (Coordenadora de Infraestrutura)',
+            'Disponibilidade mínima de 99,9% durante horário comercial e 98% fora do expediente',
           anotacoes: [
             {
-              id: 121,
-              texto: 'Indique os responsáveis pela fiscalização e gestão do contrato',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:20:00Z',
+              id: 10021,
+              autor: 'Bianca Torres',
+              dataCriacao: '2025-02-24T14:25:00',
+              texto: 'Estabelecer métricas de monitoramento',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Forma de Comunicação',
+      descricao: 'Idioma',
       atributos: [
         {
           id: 22,
-          descricao: 'Canais de comunicação',
-          resposta:
-            'E-mail institucional, sistema de chamados e reuniões presenciais ou virtuais conforme necessidade',
+          descricao: 'Suporte a Idiomas',
+          codTipoAtributo: 1,
+          idResposta: 122,
+          resposta: 'Interface completa em português do Brasil e inglês, com suporte a UTF-8',
           anotacoes: [
             {
-              id: 122,
-              texto: 'Defina como será a comunicação entre a contratante e a contratada',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:21:00Z',
+              id: 10022,
+              autor: 'Marcelo Dias',
+              dataCriacao: '2025-02-25T09:10:00',
+              texto: 'Verificar necessidade de suporte a espanhol',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Condições de Pagamento',
+      descricao: 'Acessibilidade',
       atributos: [
         {
           id: 23,
-          descricao: 'Formato de pagamento',
+          descricao: 'Conformidade com e-MAG',
+          codTipoAtributo: 2,
+          idResposta: 123,
           resposta:
-            'Pagamento em parcela única, em até 30 dias após o recebimento definitivo dos equipamentos',
+            'Atendimento total às diretrizes do Modelo de Acessibilidade em Governo Eletrônico',
           anotacoes: [
             {
-              id: 123,
-              texto: 'Especifique como será realizado o pagamento à contratada',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:22:00Z',
+              id: 10023,
+              autor: 'Júlia Santana',
+              dataCriacao: '2025-02-25T13:50:00',
+              texto: 'Solicitar certificação WCAG 2.1 nível AA',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Documentação para Pagamento',
+      descricao: 'Transferência de Conhecimento',
       atributos: [
         {
           id: 24,
-          descricao: 'Documentos exigidos',
+          descricao: 'Documentação de Processos',
+          codTipoAtributo: 1,
+          idResposta: 124,
           resposta:
-            'Nota fiscal, certidões de regularidade fiscal (FGTS, RFB/PGFN, CNDT), relatório de recebimento definitivo assinado pelo fiscal técnico',
+            'Elaboração de documento detalhado de todas as configurações e personalizações realizadas',
           anotacoes: [
             {
-              id: 124,
-              texto: 'Liste os documentos exigidos para efetivação do pagamento',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:23:00Z',
+              id: 10024,
+              autor: 'Marcos Ribeiro',
+              dataCriacao: '2025-02-26T10:30:00',
+              texto: 'Incluir gravação das sessões de configuração',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Penalidades Aplicáveis',
+      descricao: 'Escalabilidade',
       atributos: [
         {
           id: 25,
-          descricao: 'Sanções por descumprimento',
-          resposta:
-            'Atraso na entrega: multa de 0,5% por dia, limitada a 20%; Inexecução parcial: multa de 10% sobre o valor não executado; Inexecução total: multa de 20% sobre o valor total do contrato',
+          descricao: 'Crescimento Projetado',
+          codTipoAtributo: 3,
+          idResposta: 125,
+          resposta: 'Capacidade de suportar aumento de 50% no volume de dados nos próximos 3 anos',
           anotacoes: [
             {
-              id: 125,
-              texto: 'Defina as infrações e respectivas penalidades aplicáveis',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:24:00Z',
+              id: 10025,
+              autor: 'Vanessa Lima',
+              dataCriacao: '2025-02-26T14:45:00',
+              texto: 'Detalhar estimativas de crescimento anual',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Procedimento Sancionatório',
+      descricao: 'Testes',
       atributos: [
         {
           id: 26,
-          descricao: 'Etapas do processo',
+          descricao: 'Metodologia de Testes',
+          codTipoAtributo: 2,
+          idResposta: 126,
           resposta:
-            'Notificação com prazo de 5 dias úteis para defesa prévia; análise da defesa pela autoridade competente; aplicação da sanção se for o caso, com prazo de 5 dias úteis para recurso',
+            'Execução de testes unitários, integração, carga e segurança antes da implantação',
           anotacoes: [
             {
-              id: 126,
-              texto: 'Descreva o procedimento para aplicação de sanções',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:25:00Z',
+              id: 10026,
+              autor: 'Lucas Ferreira',
+              dataCriacao: '2025-02-27T09:40:00',
+              texto: 'Incluir testes de regressão automatizados',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Critérios de Sustentabilidade',
+      descricao: 'Arquitetura',
       atributos: [
         {
           id: 27,
-          descricao: 'Requisitos ambientais',
-          resposta:
-            'Equipamentos com certificação EPEAT Gold; embalagens recicláveis; conformidade com a diretiva RoHS (Restriction of Hazardous Substances)',
+          descricao: 'Padrões Arquiteturais',
+          codTipoAtributo: 1,
+          idResposta: 127,
+          resposta: 'Utilização de microserviços com API RESTful e autenticação OAuth 2.0',
           anotacoes: [
             {
-              id: 127,
-              texto: 'Indique os critérios de sustentabilidade ambiental aplicáveis à contratação',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:26:00Z',
+              id: 10027,
+              autor: 'Rodrigo Gomes',
+              dataCriacao: '2025-02-27T13:20:00',
+              texto: 'Avaliar necessidade de suporte a GraphQL',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Procedimentos de Descarte',
+      descricao: 'Versionamento',
       atributos: [
         {
           id: 28,
-          descricao: 'Destinação de resíduos',
-          resposta:
-            'O fornecedor deverá recolher os equipamentos antigos para destinação ambientalmente correta, emitindo certificado de descarte',
+          descricao: 'Controle de Versões',
+          codTipoAtributo: 2,
+          idResposta: 128,
+          resposta: 'Utilização de Git com estratégia de branching GitFlow e CI/CD automatizado',
           anotacoes: [
             {
-              id: 128,
-              texto: 'Descreva os procedimentos de logística reversa quando aplicáveis',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:27:00Z',
+              id: 10028,
+              autor: 'Flávia Costa',
+              dataCriacao: '2025-02-28T10:15:00',
+              texto: 'Detalhar política de tags e releases',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Plano de Transição',
+      descricao: 'Backup',
       atributos: [
         {
           id: 29,
-          descricao: 'Estratégia de migração',
-          resposta:
-            'A migração dos equipamentos antigos para os novos será realizada em etapas, por setor, conforme cronograma a ser apresentado pelo fornecedor e aprovado pela equipe técnica',
+          descricao: 'Política de Backup',
+          codTipoAtributo: 3,
+          idResposta: 129,
+          resposta: 'Backup incremental diário e completo semanal, com retenção de 90 dias',
           anotacoes: [
             {
-              id: 129,
-              texto: 'Descreva como será feita a transição entre os equipamentos antigos e novos',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:28:00Z',
+              id: 10029,
+              autor: 'Sérgio Miranda',
+              dataCriacao: '2025-02-28T14:35:00',
+              texto: 'Incluir testes de restauração periódicos',
             },
           ],
         },
       ],
     },
     {
-      descricao: 'Cronograma de Transição',
+      descricao: 'Gestão de Mudanças',
       atributos: [
         {
           id: 30,
-          descricao: 'Prazos de migração',
+          descricao: 'Procedimentos de Mudança',
+          codTipoAtributo: 1,
+          idResposta: 130,
           resposta:
-            'Prazo total de 60 dias para conclusão da migração de todos os equipamentos, iniciando em até 10 dias após o recebimento definitivo',
+            'Implementação de RFC (Request for Change) com aprovação mínima de dois níveis hierárquicos',
           anotacoes: [
             {
-              id: 130,
-              texto: 'Especifique os prazos para conclusão do processo de transição',
-              autor: 'Sistema',
-              dataCriacao: '2025-02-10T08:29:00Z',
+              id: 10030,
+              autor: 'Tatiana Souza',
+              dataCriacao: '2025-03-01T09:25:00',
+              texto: 'Definir janelas de manutenção programada',
             },
           ],
         },

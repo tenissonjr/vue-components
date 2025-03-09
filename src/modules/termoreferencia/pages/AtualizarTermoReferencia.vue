@@ -11,17 +11,19 @@
     <div class="row">
       <div class="col-4">
         <app-card cardHeight="600px">
-          <atualiza-termo-referencia-lista-grupos />
+          <atualiza-termo-referencia-painel-navegacao />
         </app-card>
       </div>
       <div class="col-8">
         <app-card cardHeight="600px">
           <div class="navigation-buttons">
-            <button @click="termoReferenciaStore.irParaGrupoAnterior" :disabled="termoReferenciaStore.isPrimeiroGrupo" class="previous-button">
+            <button @click="termoReferenciaStore.irParaGrupoAnterior" :disabled="termoReferenciaStore.isPrimeiroGrupo"
+              class="previous-button">
               &laquo; Anterior
             </button>
             <atualiza-termo-referencia-status />
-            <button @click="termoReferenciaStore.irParaProximoGrupo" :disabled="termoReferenciaStore.isUltimoGrupo" class="next-button">
+            <button @click="termoReferenciaStore.irParaProximoGrupo" :disabled="termoReferenciaStore.isUltimoGrupo"
+              class="next-button">
               Próximo &raquo;
             </button>
           </div>
@@ -31,8 +33,10 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <button class="action-button btn btn-primary">Salvar rascunho</button>
-        <button class="action-button btn btn-primary">Concluir Termo de Referência</button>
+        <button class="action-button btn btn-primary"
+          @click="termoReferenciaStore.salvarRascusnhoTermoReferencia()">Salvar rascunho</button>
+        <button class="action-button btn btn-primary" @click="termoReferenciaStore.concluirTermoReferencia()">Concluir
+          Termo de Referência</button>
         <button class="action-button btn btn-secondary">Voltar</button>
       </div>
     </div>
@@ -40,8 +44,8 @@
 </template>
 <script setup lang="ts">
 import AtualizaTermoReferenciaDetalhes from '@/modules/termoreferencia/components/AtualizaTermoReferenciaDetalhes.vue';
+import AtualizaTermoReferenciaPainelNavegacao from '../components/AtualizaTermoReferenciaPainelNavegacao.vue';
 import AtualizaTermoReferenciaGrupo from '@/modules/termoreferencia/components/AtualizaTermoReferenciaGrupo.vue';
-import AtualizaTermoReferenciaListaGrupos from '@/modules/termoreferencia/components/AtualizaTermoReferenciaListaGrupos.vue';
 import AtualizaTermoReferenciaStatus from '@/modules/termoreferencia/components/AtualizaTermoReferenciaStatus.vue';
 import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
 

@@ -1,5 +1,5 @@
 <template>
-  <Editor v-model="model">
+  <Editor v-model="model" :style="editorStyle">
     <template v-slot:toolbar>
       <span class="ql-formats">
         <span class="ql-formats">
@@ -44,6 +44,38 @@
   </Editor>
 </template>
 <script setup lang="ts">
+import { computed } from 'vue';
 import Editor from 'primevue/editor'
 const model = defineModel<string>()
+
+const props = withDefaults(defineProps<{
+  status?: 'Normal' | 'Erro' | 'Aviso';
+}>(), {
+  status: 'Normal'
+});
+
+const editorStyle = computed(() => {
+  let backgroundColor;
+  switch (props.status) {
+    case 'Erro':
+      backgroundColor = '#fcd2d2';
+      break;
+    case 'Aviso':
+      backgroundColor = '#f5f5a7';
+      break;
+    default:
+      backgroundColor = 'white';
+  }
+  return {
+    '--p-editor-content-background': backgroundColor,
+    /* height: '320px'*/
+  };
+});
+
 </script>
+<style scoped>
+.ql-editor {
+  height: 320px;
+  background-color: #fcd2d2;
+}
+</style>
