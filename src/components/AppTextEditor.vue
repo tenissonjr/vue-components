@@ -3,23 +3,12 @@
     <template v-slot:toolbar>
       <span class="ql-formats">
         <span class="ql-formats">
-          <select class="ql-font"></select>
-          <select class="ql-size"></select>
-        </span>
-        <span class="ql-formats">
           <button class="ql-bold"></button>
           <button class="ql-italic"></button>
           <button class="ql-underline"></button>
           <button class="ql-strike"></button>
         </span>
-        <span class="ql-formats">
-          <button class="ql-clean"></button>
-        </span>
 
-        <span class="ql-formats">
-          <select class="ql-color"></select>
-          <select class="ql-background"></select>
-        </span>
         <span class="ql-formats">
           <button class="ql-script" value="sub"></button>
           <button class="ql-script" value="super"></button>
@@ -39,6 +28,10 @@
           <button class="ql-direction" value="rtl"></button>
           <select class="ql-align"></select>
         </span>
+        <span class="ql-formats">
+          <button class="ql-clean"></button>
+        </span>
+
       </span>
     </template>
   </Editor>

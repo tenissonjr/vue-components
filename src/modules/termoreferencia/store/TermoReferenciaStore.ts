@@ -78,9 +78,12 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
 
   const percentualAtributosTermoReferenciaRespondidos = computed(() => {
     return (
-      (totalAtributosRespondidosRespondidosTermoReferencia.value /
-        totalAtributosTermoReferencia.value) *
-      100
+      Math.round(
+        (totalAtributosRespondidosRespondidosTermoReferencia.value /
+          totalAtributosTermoReferencia.value) *
+          100 *
+          100,
+      ) / 100
     )
   })
 
