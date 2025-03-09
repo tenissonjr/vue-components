@@ -4,7 +4,7 @@ export interface IAtributoTermoReferenciaDTO {
   id: number
   descricao: string
   codTipoAtributo: number
-  idResposta: number
-  resposta: string
+  idResposta: number | null
+  resposta: string | null
   anotacoes: IAnotacaoAtributoTermoReferenciaDTO[]
 }

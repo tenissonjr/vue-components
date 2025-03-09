@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { IExibicaoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IExibicaoTermoReferenciaDTO'
-import exemploTermoReferencia from '@/modules/termoreferencia/types/IExibicaoTermoReferenciaDTO'
+import type { IAtualizacaoTermoReferenciaDTO } from '../types/IAtualizacaoTermoReferenciaDTO'
+import { exemploTermoReferencia } from '@/modules/termoreferencia/types/IAtualizacaoTermoReferenciaDTO'
 import type { IGrupoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IGrupoTermoReferenciaDTO'
 import type { IValidacaoAtributoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IValidacaoAtributoTermoReferenciaDTO'
 import type { IAtributoTermoReferenciaDTO } from '../types/IAtributoTermoReferenciaDTO'
@@ -11,7 +11,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   // State
   // ---------------------------------------------------------------------------
 
-  const exibicaoTermoReferencia = ref<IExibicaoTermoReferenciaDTO>(exemploTermoReferencia)
+  const atualizacaoTermoReferencia = ref<IAtualizacaoTermoReferenciaDTO>(exemploTermoReferencia)
 
   const exibirPainelNavegacao = ref<boolean>(true)
 
@@ -20,22 +20,22 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
     atributos: [],
   })
 
-  // Inicializa grupoSelecionadoTermoReferencia com o primeiro grupo de exibicaoTermoReferencia.grupos
-  if (exibicaoTermoReferencia.value.grupos.length > 0) {
-    grupoSelecionadoTermoReferencia.value = exibicaoTermoReferencia.value.grupos[0]
+  // Inicializa grupoSelecionadoTermoReferencia com o primeiro grupo de AtualizacaoTermoReferencia.grupos
+  if (atualizacaoTermoReferencia.value.grupos.length > 0) {
+    grupoSelecionadoTermoReferencia.value = atualizacaoTermoReferencia.value.grupos[0]
   }
 
   // ---------------------------------------------------------------------------
   // Getters
   // ---------------------------------------------------------------------------
   const indiceGrupoCorrente = computed(() => {
-    return exibicaoTermoReferencia.value.grupos.findIndex(
+    return atualizacaoTermoReferencia.value.grupos.findIndex(
       (grupo) => grupo === grupoSelecionadoTermoReferencia.value,
     )
   })
   const isPrimeiroGrupo = computed(() => indiceGrupoCorrente.value === 0)
   const isUltimoGrupo = computed(
-    () => indiceGrupoCorrente.value === exibicaoTermoReferencia.value.grupos.length - 1,
+    () => indiceGrupoCorrente.value === atualizacaoTermoReferencia.value.grupos.length - 1,
   )
 
   //Total de Atributos do Grupo Selecionado
@@ -46,7 +46,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   //Total Atributos de Todos os Grupos
   const totalAtributosTermoReferencia = computed(() => {
     let total = 0
-    exibicaoTermoReferencia.value.grupos.forEach((grupo) => {
+    atualizacaoTermoReferencia.value.grupos.forEach((grupo) => {
       total += grupo.atributos.length
     })
     return total
@@ -66,7 +66,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   //Total de Atributos Respondidos de Todos os Grupos
   const totalAtributosRespondidosRespondidosTermoReferencia = computed(() => {
     let total = 0
-    exibicaoTermoReferencia.value.grupos.forEach((grupo) => {
+    atualizacaoTermoReferencia.value.grupos.forEach((grupo) => {
       grupo.atributos.forEach((atributo) => {
         if (atributo.resposta && atributo.resposta.trim() !== '') {
           total++
@@ -87,7 +87,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   const listaValidacaoAtributos = computed(() => {
     const atributosNaoInformados: IValidacaoAtributoTermoReferenciaDTO[] = []
 
-    exibicaoTermoReferencia.value.grupos.forEach((grupo) => {
+    atualizacaoTermoReferencia.value.grupos.forEach((grupo) => {
       grupo.atributos.forEach((atributo) => {
         if (!atributo.resposta || atributo.resposta.trim() === '') {
           atributosNaoInformados.push({
@@ -118,14 +118,14 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   const irParaGrupoAnterior = () => {
     if (indiceGrupoCorrente.value > 0) {
       grupoSelecionadoTermoReferencia.value =
-        exibicaoTermoReferencia.value.grupos[indiceGrupoCorrente.value - 1]
+        atualizacaoTermoReferencia.value.grupos[indiceGrupoCorrente.value - 1]
     }
   }
 
   const irParaProximoGrupo = () => {
-    if (indiceGrupoCorrente.value < exibicaoTermoReferencia.value.grupos.length - 1) {
+    if (indiceGrupoCorrente.value < atualizacaoTermoReferencia.value.grupos.length - 1) {
       grupoSelecionadoTermoReferencia.value =
-        exibicaoTermoReferencia.value.grupos[indiceGrupoCorrente.value + 1]
+        atualizacaoTermoReferencia.value.grupos[indiceGrupoCorrente.value + 1]
     }
   }
 
@@ -134,7 +134,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   }
 
   const selecionarGrupoPorDescricao = (descricaoGrupo: string) => {
-    const grupoEncontrado = exibicaoTermoReferencia.value.grupos.find(
+    const grupoEncontrado = atualizacaoTermoReferencia.value.grupos.find(
       (grupo) => grupo.descricao === descricaoGrupo,
     )
     if (grupoEncontrado) {
@@ -164,7 +164,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
 
   return {
     exibirPainelNavegacao,
-    exibicaoTermoReferencia,
+    atualizacaoTermoReferencia,
     grupoSelecionadoTermoReferencia,
     selecionarGrupo,
     indiceGrupoCorrente,

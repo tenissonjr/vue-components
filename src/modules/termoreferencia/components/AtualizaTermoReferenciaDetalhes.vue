@@ -6,7 +6,7 @@
           <dt>
             <h6>Processo</h6>
           </dt>
-          <dd> {{ exibicaoTermoReferencia.termoReferencia.processo }}</dd>
+          <dd> {{ atualizacaoTermoReferencia.termoReferencia.processo }}</dd>
         </dl>
       </div>
 
@@ -15,7 +15,8 @@
           <dt>
             <h6>Número</h6>
           </dt>
-          <dd><span data-testid="termoReferenciaNumero">{{ exibicaoTermoReferencia.termoReferencia.numero }}</span></dd>
+          <dd><span data-testid="termoReferenciaNumero">{{ atualizacaoTermoReferencia.termoReferencia.numero }}</span>
+          </dd>
         </dl>
       </div>
 
@@ -25,7 +26,7 @@
           <dt>
             <h6>Situação</h6>
           </dt>
-          <dd>{{ exibicaoTermoReferencia.termoReferencia.situacao }}</dd>
+          <dd>{{ atualizacaoTermoReferencia.termoReferencia.situacao }}</dd>
         </dl>
       </div>
 
@@ -35,7 +36,7 @@
           <dt>
             <h6>Descrição</h6>
           </dt>
-          <dd> {{ exibicaoTermoReferencia.termoReferencia.descricao }}</dd>
+          <dd> {{ atualizacaoTermoReferencia.termoReferencia.descricao }}</dd>
         </dl>
       </div>
 
@@ -48,7 +49,7 @@
         <dt>
           <h6>Unidade</h6>
         </dt>
-        <dd> {{ exibicaoTermoReferencia.termoReferencia.unidade }}</dd>
+        <dd> {{ atualizacaoTermoReferencia.termoReferencia.unidade }}</dd>
       </dl>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -56,7 +57,7 @@
         <dt>
           <h6>Responsável</h6>
         </dt>
-        <dd> {{ exibicaoTermoReferencia.termoReferencia.responsavel }}</dd>
+        <dd> {{ atualizacaoTermoReferencia.termoReferencia.responsavel }}</dd>
       </dl>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -64,7 +65,7 @@
         <dt>
           <h6>Finalidade</h6>
         </dt>
-        <dd> {{ exibicaoTermoReferencia.termoReferencia.finalidade }}</dd>
+        <dd> {{ atualizacaoTermoReferencia.termoReferencia.finalidade }}</dd>
       </dl>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -72,7 +73,7 @@
         <dt>
           <h6>Dt.Criação</h6>
         </dt>
-        <dd> {{ exibicaoTermoReferencia.termoReferencia.dataCriacao }}</dd>
+        <dd> {{ atualizacaoTermoReferencia.termoReferencia.dataCriacao }}</dd>
       </dl>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -80,7 +81,7 @@
         <dt>
           <h6>Versão</h6>
         </dt>
-        <dd> {{ exibicaoTermoReferencia.termoReferencia.versao }}</dd>
+        <dd> {{ atualizacaoTermoReferencia.termoReferencia.versao }}</dd>
       </dl>
     </div>
   </div>
@@ -91,7 +92,7 @@ import type { ITermoReferenciaDTO } from '@/modules/termoreferencia/types/ITermo
 import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
 
 const termoReferenciaStore = useTermoReferenciaStore();
-const { exibicaoTermoReferencia } = storeToRefs(termoReferenciaStore)
+const { atualizacaoTermoReferencia } = storeToRefs(termoReferenciaStore)
 
 
 </script>

@@ -43,7 +43,7 @@ import GrupoTermoReferenciaBadges from '@/modules/termoreferencia/components/Gru
 import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
 
 const termoReferenciaStore = useTermoReferenciaStore();
-const { exibicaoTermoReferencia, grupoSelecionadoTermoReferencia } = storeToRefs(termoReferenciaStore)
+const { atualizacaoTermoReferencia, grupoSelecionadoTermoReferencia } = storeToRefs(termoReferenciaStore)
 
 const pesquisa = ref('');
 const situacao = ref('');
@@ -51,7 +51,7 @@ const situacao = ref('');
 
 const gruposFiltrados = computed(() => {
   const searchTerm = pesquisa.value.toLowerCase().trim();
-  return exibicaoTermoReferencia.value.grupos.filter(grupo => {
+  return atualizacaoTermoReferencia.value.grupos.filter(grupo => {
     const matchesSearchTerm = grupo.descricao.toLowerCase().includes(searchTerm);
     const matchesSituacao = situacao.value === '' || (
       situacao.value === 'informados' && grupo.atributos.every(attr => attr.resposta && attr.resposta.trim() !== '')
