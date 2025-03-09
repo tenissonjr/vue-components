@@ -1,5 +1,5 @@
 <template>
-  <Editor v-model="model" :style="editorStyle">
+  <Editor v-model="model" style="width: 95%;">
     <template v-slot:toolbar>
       <span class="ql-formats">
         <span class="ql-formats">

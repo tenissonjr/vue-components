@@ -1,7 +1,7 @@
 <template>
   <app-tabs :value="1">
     <template #tab-buttons>
-      <app-tab-button :value="1">Atributos</app-tab-button>
+      <app-tab-button :value="1">Atributos do Termo de Referência</app-tab-button>
       <app-tab-button :value="2">Validações</app-tab-button>
     </template>
     <template #tab-contents>

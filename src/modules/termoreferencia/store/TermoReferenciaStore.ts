@@ -13,6 +13,8 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
 
   const exibicaoTermoReferencia = ref<IExibicaoTermoReferenciaDTO>(exemploTermoReferencia)
 
+  const exibirPainelNavegacao = ref<boolean>(true)
+
   const grupoSelecionadoTermoReferencia = ref<IGrupoTermoReferenciaDTO>({
     descricao: '',
     atributos: [],
@@ -72,6 +74,14 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
       })
     })
     return total
+  })
+
+  const percentualAtributosTermoReferenciaRespondidos = computed(() => {
+    return (
+      (totalAtributosRespondidosRespondidosTermoReferencia.value /
+        totalAtributosTermoReferencia.value) *
+      100
+    )
   })
 
   const listaValidacaoAtributos = computed(() => {
@@ -153,6 +163,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   }
 
   return {
+    exibirPainelNavegacao,
     exibicaoTermoReferencia,
     grupoSelecionadoTermoReferencia,
     selecionarGrupo,
@@ -166,6 +177,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
     totalAtributosTermoReferencia,
     totalAtributosRespondidosGrupoSelecionado,
     totalAtributosRespondidosRespondidosTermoReferencia,
+    percentualAtributosTermoReferenciaRespondidos,
     listaValidacaoAtributos,
     obterStatusAtributo,
     salvarRascusnhoTermoReferencia,

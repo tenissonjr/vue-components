@@ -36,7 +36,8 @@ const exemploTermoReferencia: IExibicaoTermoReferenciaDTO = {
               id: 10001,
               autor: 'Carlos Andrade',
               dataCriacao: '2025-02-16T09:15:00',
-              texto: 'Detalhar quais são os softwares específicos necessários',
+              texto:
+                'Detalhar quais são os softwares específicos necessários devido à modernização da infraestrutura de desenvolvimento da equipe de TI da autarquia X e quais são as licenças necessárias para a aquisição de tais softwares.',
             },
           ],
         },

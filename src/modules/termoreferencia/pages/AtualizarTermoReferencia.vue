@@ -10,23 +10,13 @@
     </div>
     <div class="row">
       <div class="col-4">
-        <app-card cardHeight="600px">
+        <app-card cardHeight="600px" v-if="exibirPainelNavegacao">
           <atualiza-termo-referencia-painel-navegacao />
         </app-card>
       </div>
-      <div class="col-8">
+      <div :class="exibirPainelNavegacao ? 'col-8' : 'col-12'">
         <app-card cardHeight="600px">
-          <div class="navigation-buttons">
-            <button @click="termoReferenciaStore.irParaGrupoAnterior" :disabled="termoReferenciaStore.isPrimeiroGrupo"
-              class="previous-button">
-              &laquo; Anterior
-            </button>
-            <atualiza-termo-referencia-status />
-            <button @click="termoReferenciaStore.irParaProximoGrupo" :disabled="termoReferenciaStore.isUltimoGrupo"
-              class="next-button">
-              Próximo &raquo;
-            </button>
-          </div>
+          <atualiza-termo-referencia-status />
           <atualiza-termo-referencia-grupo />
         </app-card>
       </div>
@@ -43,6 +33,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 import AtualizaTermoReferenciaDetalhes from '@/modules/termoreferencia/components/AtualizaTermoReferenciaDetalhes.vue';
 import AtualizaTermoReferenciaPainelNavegacao from '../components/AtualizaTermoReferenciaPainelNavegacao.vue';
 import AtualizaTermoReferenciaGrupo from '@/modules/termoreferencia/components/AtualizaTermoReferenciaGrupo.vue';
@@ -51,35 +42,12 @@ import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoRe
 
 const termoReferenciaStore = useTermoReferenciaStore();
 
+const { exibirPainelNavegacao } = storeToRefs(termoReferenciaStore);
+
 
 </script>
 <style scoped>
-.navigation-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
 .action-button {
   margin-left: 10px;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.previous-button {
-  margin-left: 20px;
-}
-
-.next-button {
-  margin-right: 20px;
 }
 </style>

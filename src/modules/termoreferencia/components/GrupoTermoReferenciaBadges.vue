@@ -1,6 +1,6 @@
 <template>
   <span class="badges-container" v-tooltip="{ value: mensagensErro }">
-    <Badge :value="value" size="small" :severity="severity" />
+    <Badge :value="valorBadge" size="small" :severity="severity" style="color:white" />
   </span>
 </template>
 <script setup lang="ts">
@@ -22,8 +22,8 @@ const totalRespostasNaoNulasGrupo = (): number => {
   return totalErros;
 };
 
-const value = computed((): string => {
-  return totalRespostasNaoNulasGrupo() > 0 ? totalRespostasNaoNulasGrupo().toString() : 'Ok';
+const valorBadge = computed((): string => {
+  return totalRespostasNaoNulasGrupo() > 0 ? totalRespostasNaoNulasGrupo().toString() : '✔️';
 });
 
 
