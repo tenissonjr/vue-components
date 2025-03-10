@@ -21,10 +21,10 @@
             <tr v-if="gruposFiltrados.length === 0">
               <td colspan="2" class="text-center">Nenhum atributo encontrado com os critérios informados</td>
             </tr>
-            <tr v-for="grupo in gruposFiltrados" :key="grupo.descricao"
+            <tr v-for="(grupo, index) in gruposFiltrados" :key="grupo.descricao"
               :class="{ 'selected': grupo.descricao === grupoSelecionadoTermoReferencia.descricao }">
               <td>
-                <a href=" #" @click="onGrupoSelecionado(grupo)">{{ grupo.descricao }}</a>
+                <a href=" #" @click="onGrupoSelecionado(grupo)">{{ index + 1 }}. {{ grupo.descricao }}</a>
               </td>
               <td><grupo-termo-referencia-badges :grupoTermoReferencia="grupo" /></td>
             </tr>

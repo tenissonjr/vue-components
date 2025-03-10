@@ -38,35 +38,9 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
     () => indiceGrupoCorrente.value === atualizacaoTermoReferencia.value.grupos.length - 1,
   )
 
-  //Total de Atributos do Grupo Selecionado
-  const totalAtributosGrupoSelecionado = computed(() => {
-    return grupoSelecionadoTermoReferencia.value.atributos.length
-  })
-
-  //Total Atributos de Todos os Grupos
-  const totalAtributosTermoReferencia = computed(() => {
+  const calcularTotalAtributosRespondidos = (grupos: IGrupoTermoReferenciaDTO[]): number => {
     let total = 0
-    atualizacaoTermoReferencia.value.grupos.forEach((grupo) => {
-      total += grupo.atributos.length
-    })
-    return total
-  })
-
-  //Total de Atributos Respondidos do Grupo Selecionado
-  const totalAtributosRespondidosGrupoSelecionado = computed(() => {
-    let total = 0
-    grupoSelecionadoTermoReferencia.value.atributos.forEach((atributo) => {
-      if (atributo.resposta && atributo.resposta.trim() !== '') {
-        total++
-      }
-    })
-    return total
-  })
-
-  //Total de Atributos Respondidos de Todos os Grupos
-  const totalAtributosRespondidosRespondidosTermoReferencia = computed(() => {
-    let total = 0
-    atualizacaoTermoReferencia.value.grupos.forEach((grupo) => {
+    grupos.forEach((grupo) => {
       grupo.atributos.forEach((atributo) => {
         if (atributo.resposta && atributo.resposta.trim() !== '') {
           total++
@@ -74,23 +48,43 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
       })
     })
     return total
+  }
+
+  //Total de Atributos do Grupo Selecionado
+  const totalAtributosGrupoSelecionado = computed(() => {
+    return grupoSelecionadoTermoReferencia.value.atributos.length
+  })
+
+  //Total Atributos de Todos os Grupos
+  const totalAtributosTermoReferencia = computed(() => {
+    return atualizacaoTermoReferencia.value.grupos.reduce((total, grupo) => {
+      return total + grupo.atributos.length
+    }, 0)
+  })
+
+  //Total de Atributos Respondidos do Grupo Selecionado
+  const totalAtributosRespondidosGrupoSelecionado = computed(() => {
+    return calcularTotalAtributosRespondidos([grupoSelecionadoTermoReferencia.value])
+  })
+  //Total de Atributos Respondidos de Todos os Grupos
+  const totalAtributosRespondidosRespondidosTermoReferencia = computed(() => {
+    return calcularTotalAtributosRespondidos(atualizacaoTermoReferencia.value.grupos)
   })
 
   const percentualAtributosTermoReferenciaRespondidos = computed(() => {
-    return (
-      Math.round(
-        (totalAtributosRespondidosRespondidosTermoReferencia.value /
-          totalAtributosTermoReferencia.value) *
-          100 *
-          100,
-      ) / 100
+    return Math.round(
+      (totalAtributosRespondidosRespondidosTermoReferencia.value /
+        totalAtributosTermoReferencia.value) *
+        100,
     )
   })
 
-  const listaValidacaoAtributos = computed(() => {
+  const validarAtributos = (
+    grupos: IGrupoTermoReferenciaDTO[],
+  ): IValidacaoAtributoTermoReferenciaDTO[] => {
     const atributosNaoInformados: IValidacaoAtributoTermoReferenciaDTO[] = []
 
-    atualizacaoTermoReferencia.value.grupos.forEach((grupo) => {
+    grupos.forEach((grupo) => {
       grupo.atributos.forEach((atributo) => {
         if (!atributo.resposta || atributo.resposta.trim() === '') {
           atributosNaoInformados.push({
@@ -105,19 +99,20 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
     })
 
     return atributosNaoInformados
-  })
-
-  const obterStatusAtributo = (atributo: IAtributoTermoReferenciaDTO): string => {
-    let status: string = 'Normal'
-    if (!atributo.resposta || atributo.resposta.trim() === '') {
-      status = 'Erro'
-    }
-    return status
   }
+
+  const listaValidacaoAtributos = computed(() => {
+    return validarAtributos(atualizacaoTermoReferencia.value.grupos)
+  })
 
   // ---------------------------------------------------------------------------
   // Actions
   // ---------------------------------------------------------------------------
+
+  const obterStatusAtributo = (atributo: IAtributoTermoReferenciaDTO): string => {
+    return !atributo.resposta || atributo.resposta.trim() === '' ? 'Erro' : 'Normal'
+  }
+
   const irParaGrupoAnterior = () => {
     if (indiceGrupoCorrente.value > 0) {
       grupoSelecionadoTermoReferencia.value =
