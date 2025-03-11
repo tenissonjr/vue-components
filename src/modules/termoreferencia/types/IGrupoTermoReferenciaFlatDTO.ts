@@ -9,23 +9,32 @@ export interface IGrupoTermoReferenciaFlatDTO {
 }
 //Função que recebe como parametro uma array de objetos IGrupoTermoReferenciaDTO e retorna um objeto um array de  IGrupoTermoReferenciaFlatDTO a ordenação hierarquica deverá deverser a concatenação de todas as ordenações de todos os níveis
 export const flatGrupoTermoReferencia = (
-  grupo: IGrupoTermoReferenciaDTO,
-  nivel = 0,
-  ordernacaoHierarquica = '',
+  grupos: IGrupoTermoReferenciaDTO[],
+  nivel: number = 0,
+  ordernacaoHierarquica: string = '',
 ): IGrupoTermoReferenciaFlatDTO[] => {
-  let flatGrupo: IGrupoTermoReferenciaFlatDTO[] = []
-  let ordernacaoHierarquicaAtual = `${ordernacaoHierarquica}.${grupo.ordenacao}`
-  flatGrupo.push({
-    descricao: grupo.descricao,
-    ordenacao: grupo.ordenacao,
-    nivel: nivel,
-    ordernacaoHierarquica: ordernacaoHierarquicaAtual,
-    atributos: grupo.atributos,
+  const flatGrupos: IGrupoTermoReferenciaFlatDTO[] = []
+
+  const prefixo = ordernacaoHierarquica != '' ? ordernacaoHierarquica + '.' : ''
+
+  grupos.forEach((grupo) => {
+    flatGrupos.push({
+      descricao: grupo.descricao,
+      ordenacao: grupo.ordenacao,
+      nivel: nivel,
+      ordernacaoHierarquica: `${prefixo}${grupo.ordenacao.toString()}`,
+      atributos: grupo.atributos,
+    })
+    if (grupo.grupos && grupo.grupos.length > 0) {
+      flatGrupos.push(
+        ...flatGrupoTermoReferencia(
+          grupo.grupos,
+          nivel + 1,
+          `${prefixo}${grupo.ordenacao.toString()}`,
+        ),
+      )
+    }
   })
-  grupo.grupos?.forEach((grupoFilho) => {
-    flatGrupo = flatGrupo.concat(
-      flatGrupoTermoReferencia(grupoFilho, nivel + 1, ordernacaoHierarquicaAtual),
-    )
-  })
-  return flatGrupo
+
+  return flatGrupos
 }

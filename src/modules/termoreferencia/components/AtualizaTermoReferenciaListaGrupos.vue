@@ -23,10 +23,26 @@
             </tr>
             <tr v-for="grupo in gruposFiltrados" :key="grupo.descricao"
               :class="{ 'selected': grupo.descricao === grupoSelecionadoTermoReferencia.descricao }">
-              <td>
-                <a href=" #" @click="onGrupoSelecionado(grupo)">{{ grupo.ordenacao }}. {{ grupo.descricao }}</a>
-              </td>
-              <td><grupo-termo-referencia-badges :grupoTermoReferencia="grupo" /></td>
+              <template v-if="grupo.atributos.length > 0">
+                <td>
+
+                  <a href=" #" @click="onGrupoSelecionado(grupo)"><span
+                      v-html="'&nbsp;'.repeat(grupo.nivel * 2)"></span>{{ grupo.ordernacaoHierarquica }}. {{
+                        grupo.descricao
+                      }}</a>
+                </td>
+                <td><grupo-termo-referencia-badges :grupoTermoReferencia="grupo" /></td>
+              </template>
+              <template v-else>
+                <td>
+
+                  <span v-html="'&nbsp;'.repeat(grupo.nivel * 2)"></span>{{ grupo.ordernacaoHierarquica }}.
+                  {{
+                    grupo.descricao }}
+                </td>
+                <td></td>
+
+              </template>
             </tr>
           </tbody>
         </table>
@@ -43,7 +59,7 @@ import GrupoTermoReferenciaBadges from '@/modules/termoreferencia/components/Gru
 import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
 
 const termoReferenciaStore = useTermoReferenciaStore();
-const { atualizacaoTermoReferencia, grupoSelecionadoTermoReferencia } = storeToRefs(termoReferenciaStore)
+const { grupoSelecionadoTermoReferencia, flatGrupos } = storeToRefs(termoReferenciaStore)
 
 const pesquisa = ref('');
 const situacao = ref('');
@@ -51,7 +67,7 @@ const situacao = ref('');
 
 const gruposFiltrados = computed(() => {
   const searchTerm = pesquisa.value.toLowerCase().trim();
-  return atualizacaoTermoReferencia.value.grupos.filter(grupo => {
+  return flatGrupos.value.filter(grupo => {
     const matchesSearchTerm = grupo.descricao.toLowerCase().includes(searchTerm);
     const matchesSituacao = situacao.value === '' || (
       situacao.value === 'informados' && grupo.atributos.every(attr => attr.resposta && attr.resposta.trim() !== '')
@@ -93,11 +109,6 @@ const onGrupoSelecionado = (grupo: IGrupoTermoReferenciaDTO) => {
   overflow-y: auto;
 }
 
-a {
-  margin-left: 20px;
-  margin-top: 10px;
-  display: block;
-}
 
 li {
   cursor: pointer;

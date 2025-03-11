@@ -6,6 +6,7 @@ import type { IGrupoTermoReferenciaDTO } from '@/modules/termoreferencia/types/I
 import type { IValidacaoAtributoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IValidacaoAtributoTermoReferenciaDTO'
 import type { IAtributoTermoReferenciaDTO } from '../types/IAtributoTermoReferenciaDTO'
 import { flatGrupoTermoReferencia } from '../types/IGrupoTermoReferenciaFlatDTO'
+import type { IGrupoTermoReferenciaFlatDTO } from '../types/IGrupoTermoReferenciaFlatDTO'
 
 export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () => {
   // ---------------------------------------------------------------------------
@@ -14,15 +15,12 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
 
   const atualizacaoTermoReferencia = ref<IAtualizacaoTermoReferenciaDTO>(exemploTermoReferencia)
 
-  const flatGrupos = flatGrupoTermoReferencia(atualizacaoTermoReferencia.value.grupos)
-  console.log("flatGrupos=>",flatGrupos)
-
   const exibirPainelNavegacao = ref<boolean>(true)
 
   const grupoSelecionadoTermoReferencia = ref<IGrupoTermoReferenciaDTO>({
     descricao: '',
     atributos: [],
-    ordenacao: 0
+    ordenacao: 0,
   })
 
   // Inicializa grupoSelecionadoTermoReferencia com o primeiro grupo de AtualizacaoTermoReferencia.grupos
@@ -33,6 +31,10 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   // ---------------------------------------------------------------------------
   // Getters
   // ---------------------------------------------------------------------------
+  const flatGrupos = computed((): IGrupoTermoReferenciaFlatDTO[] =>
+    flatGrupoTermoReferencia(atualizacaoTermoReferencia.value.grupos),
+  )
+
   const indiceGrupoCorrente = computed(() => {
     return atualizacaoTermoReferencia.value.grupos.findIndex(
       (grupo) => grupo === grupoSelecionadoTermoReferencia.value,
@@ -85,7 +87,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   })
 
   const validarAtributos = (
-    grupos: IGrupoTermoReferenciaDTO[],
+    grupos: IGrupoTermoReferenciaFlatDTO[],
   ): IValidacaoAtributoTermoReferenciaDTO[] => {
     const atributosNaoInformados: IValidacaoAtributoTermoReferenciaDTO[] = []
 
@@ -107,7 +109,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   }
 
   const listaValidacaoAtributos = computed(() => {
-    return validarAtributos(atualizacaoTermoReferencia.value.grupos)
+    return validarAtributos(flatGrupos.value)
   })
 
   // ---------------------------------------------------------------------------
@@ -166,6 +168,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   }
 
   return {
+    flatGrupos,
     exibirPainelNavegacao,
     atualizacaoTermoReferencia,
     grupoSelecionadoTermoReferencia,
