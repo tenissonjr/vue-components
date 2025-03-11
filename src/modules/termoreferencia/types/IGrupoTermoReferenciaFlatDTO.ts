@@ -1,6 +1,7 @@
 import type { IAtributoTermoReferenciaDTO } from './IAtributoTermoReferenciaDTO'
 import type { IGrupoTermoReferenciaDTO } from './IGrupoTermoReferenciaDTO'
 export interface IGrupoTermoReferenciaFlatDTO {
+  id:number;
   descricao: string
   ordenacao: number
   nivel: number
@@ -19,6 +20,7 @@ export const flatGrupoTermoReferencia = (
 
   grupos.forEach((grupo) => {
     flatGrupos.push({
+      id: grupo.id,
       descricao: grupo.descricao,
       ordenacao: grupo.ordenacao,
       nivel: nivel,

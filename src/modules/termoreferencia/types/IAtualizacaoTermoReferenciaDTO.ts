@@ -23,11 +23,13 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
   },
   grupos: [
     {
+      id: 10,
       descricao: 'Informações Iniciais',
       ordenacao: 1,
       atributos: [],
       grupos: [
         {
+          id: 2,
           descricao: 'Órgãos Requisitantes',
           ordenacao: 1,
           atributos: [
@@ -50,6 +52,7 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
           ],
         },
         {
+          id: 3,
           descricao: 'Órgãos Especificadores',
           ordenacao: 2,
           atributos: [
@@ -72,6 +75,7 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
           ],
         },
         {
+          id: 4,
           descricao: 'Contratação anterior',
           ordenacao: 3,
           atributos: [
@@ -96,6 +100,7 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
       ],
     },
     {
+      id:20 ,
       descricao: 'Definição do Objeto',
       ordenacao: 2,
       atributos: [
@@ -134,6 +139,7 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
       ],
     },
     {
+      id: 30,
       descricao: 'Fundamentação da Contratação',
       ordenacao: 3,
       atributos: [
@@ -172,6 +178,7 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
       ],
     },
     {
+      id: 40,
       descricao: 'Requisitos da Contratação',
       ordenacao: 4,
       atributos: [
