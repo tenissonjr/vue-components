@@ -32,10 +32,13 @@
           placeholder="Select Cities" :maxSelectedLabels="3" />
       </div>
 
-      <div class="m-3 row" v-if="true">
+      <div class="m-3 row" v-if="false">
         <atualizar-termo-referencia />
       </div>
 
+      <div class="m-3 row" v-if="true">
+        <data-table-view />
+      </div>
 
 
 
@@ -52,7 +55,7 @@ import HystoryView from './HistoryView.vue'
 import TabsView from './TabsView.vue'
 import StepsView from './StepsView.vue'
 import AtualizarTermoReferencia from '@/modules/termoreferencia/pages/AtualizarTermoReferencia.vue'
-
+import DataTableView from './DataTableView.vue'
 const selectedCities = ref()
 const cities = ref([
   { name: 'New York', code: 'NY' },
