@@ -1,6 +1,6 @@
 <template>
 
-  <app-data-table :value="atributos"
+  <app-data-view :value="atributos"
   :columns="[
     { field: 'id', header: 'Id' },
     { field: 'descricao', header: 'Descrição', sortable: true  , filter:true}

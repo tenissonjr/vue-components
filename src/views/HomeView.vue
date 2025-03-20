@@ -55,7 +55,7 @@ import HystoryView from './HistoryView.vue'
 import TabsView from './TabsView.vue'
 import StepsView from './StepsView.vue'
 import AtualizarTermoReferencia from '@/modules/termoreferencia/pages/AtualizarTermoReferencia.vue'
-import DataTableView from './DataTableView.vue'
+import DataTableView from './DataView.vue'
 const selectedCities = ref()
 const cities = ref([
   { name: 'New York', code: 'NY' },
