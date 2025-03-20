@@ -4,15 +4,16 @@
     :stripedRows="stripedRows"
     :removableSort="removableSort"
     v-model:filters="filters"
-    :paginator="paginator"
+    :paginator="showPaginator"
     :rows="rows"
     :rowsPerPageOptions="rowsPerPageOptions"
     :paginatorTemplate="paginatorTemplate"
     :currentPageReportTemplate="currentPageReportTemplate"
+    v-bind="$attrs"
     :tableStyle="tableStyle"
   >
-    <template #header>
-      <div class="datatable-controls">
+    <template v-if="filter" #header>
+      <div  class="datatable-controls">
         <div class="datatable-controls-search">
           Pesquisar por:
           <InputText v-model="filters['global'].value" :placeholder="searchPlaceholder" />
@@ -33,13 +34,13 @@
 </template>
 
 <script setup lang="ts">
-import {  ref } from 'vue';
+import {  ref ,computed } from 'vue';
 import { FilterMatchMode } from '@primevue/core/api';
 import DataTable from 'primevue/datatable';
 import InputText from 'primevue/inputtext';
 import Column from 'primevue/column';
 import type { IColumn } from './IColumn';
-defineProps({
+const props =defineProps({
   value: {
     type: Array,
     required: true,
@@ -56,6 +57,11 @@ defineProps({
     type: Boolean,
     default: true,
   },
+  filter: {
+    type: Boolean,
+    default: true,
+  },
+
   rows: {
     type: Number,
     default: 10,
@@ -90,6 +96,9 @@ defineProps({
 const filters = ref({
   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
+
+
+const showPaginator = computed(() => props.paginator && props.value.length > props.rows);
 </script>
 
 <style scoped>
