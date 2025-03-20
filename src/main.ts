@@ -18,6 +18,8 @@ import AppStepper from './components/AppStepper.vue'
 import AppStep from './components/AppStep.vue'
 import AppStepPanel from './components/AppStepPanel.vue'
 import AppCard from './components/AppCard.vue'
+import AppDataTable from './components/AppDataTable/AppDataTable.vue'
+
 const app = createApp(App)
 
 app.use(createPinia())
@@ -60,6 +62,8 @@ app.component('AppStepper', AppStepper)
 app.component('AppStepPanel', AppStepPanel)
 app.component('AppStep', AppStep)
 app.component('AppCard', AppCard)
+app.component('AppDataTable', AppDataTable)
+
 
 app.directive('tooltip', Tooltip)
 app.mount('#app')

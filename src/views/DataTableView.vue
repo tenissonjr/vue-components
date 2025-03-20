@@ -1,35 +1,19 @@
 <template>
-  <DataTable :value="atributos" stripedRows showGridlines removableSort v-model:filters="filters" paginator :rows="5"
-    :rowsPerPageOptions="[5, 10, 20, 50]"
-    paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink  RowsPerPageDropdown"
-    currentPageReportTemplate="De {first} até {last} de {totalRecords} itens" tableStyle="min-width: 50rem">
-    <template #header>
-      <div class="datatable-controls">
-        <div class="datatable-controls-search">
-          Pesquisar por:
-          <InputText v-model="filters['global'].value" placeholder="Filtro de pesquisa" />
-        </div>
-      </div>
-    </template>
-    <Column field="id" header="Id."></Column>
-    <Column field="descricao" header="Descrição" sortable></Column>
-  </DataTable>
+
+  <app-data-table :value="atributos"
+  :columns="[
+    { field: 'id', header: 'Id' },
+    { field: 'descricao', header: 'Descrição', sortable: true  , filter:true}
+]" />
+
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-import { FilterMatchMode } from '@primevue/core/api';
-import Column from 'primevue/column';
-import DataTable from 'primevue/datatable';
-import InputText from 'primevue/inputtext';
 
 interface IAtributos {
   id: string;
   descricao: string;
 }
-const filters = ref({
-  global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 
-});
 
 const atributos: IAtributos[] = [
   { id: "1", descricao: "Objeto da contratação" },
