@@ -32,11 +32,11 @@
           placeholder="Select Cities" :maxSelectedLabels="3" />
       </div>
 
-      <div class="m-3 row" v-if="false">
+      <div class="m-3 row" v-if="true">
         <atualizar-termo-referencia />
       </div>
 
-      <div class="m-3 row" v-if="true">
+      <div class="m-3 row" v-if="false">
         <data-table-view />
       </div>
 
