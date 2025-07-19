@@ -53,7 +53,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { storeToRefs } from 'pinia'
-import type { IGrupoTermoReferenciaDTO } from '@/modules/termoreferencia/types/IGrupoTermoReferenciaDTO'
+import type { IGrupoTermoReferenciaFlatDTO } from '@/modules/termoreferencia/types/IGrupoTermoReferenciaFlatDTO'
 import GrupoTermoReferenciaBadges from '@/modules/termoreferencia/components/GrupoTermoReferenciaBadges.vue'
 
 import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
@@ -78,7 +78,7 @@ const gruposFiltrados = computed(() => {
   });
 });
 
-const onGrupoSelecionado = (grupo: IGrupoTermoReferenciaDTO) => {
+const onGrupoSelecionado = (grupo: IGrupoTermoReferenciaFlatDTO) => {
   termoReferenciaStore.selecionarGrupo(grupo);
 };
 </script>

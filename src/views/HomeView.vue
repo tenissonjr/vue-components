@@ -36,6 +36,9 @@
         <atualizar-termo-referencia />
       </div>
 
+      <div class="m-3 row" v-if="false">
+        <data-table-view />
+      </div>
 
 
 
@@ -52,7 +55,7 @@ import HystoryView from './HistoryView.vue'
 import TabsView from './TabsView.vue'
 import StepsView from './StepsView.vue'
 import AtualizarTermoReferencia from '@/modules/termoreferencia/pages/AtualizarTermoReferencia.vue'
-
+import DataTableView from './DataView.vue'
 const selectedCities = ref()
 const cities = ref([
   { name: 'New York', code: 'NY' },

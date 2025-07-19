@@ -17,16 +17,15 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
 
   const exibirPainelNavegacao = ref<boolean>(true)
 
-  const grupoSelecionadoTermoReferencia = ref<IGrupoTermoReferenciaDTO>({
+  const grupoSelecionadoTermoReferencia = ref<IGrupoTermoReferenciaFlatDTO>({
+    id: 0,
     descricao: '',
+    nivel: 0,
+    ordernacaoHierarquica: '0',
     atributos: [],
     ordenacao: 0,
   })
 
-  // Inicializa grupoSelecionadoTermoReferencia com o primeiro grupo de AtualizacaoTermoReferencia.grupos
-  if (atualizacaoTermoReferencia.value.grupos.length > 0) {
-    grupoSelecionadoTermoReferencia.value = atualizacaoTermoReferencia.value.grupos[0]
-  }
 
   // ---------------------------------------------------------------------------
   // Getters
@@ -34,15 +33,24 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   const flatGrupos = computed((): IGrupoTermoReferenciaFlatDTO[] =>
     flatGrupoTermoReferencia(atualizacaoTermoReferencia.value.grupos),
   )
+  //Exibir a string  json de flatGrupos no console
+  console.log('JSON=>',JSON.stringify(flatGrupos.value))
+
+  // Inicializa grupoSelecionadoTermoReferencia com o primeiro grupo de AtualizacaoTermoReferencia.grupos
+  const primeiroGrupoComAtributos = flatGrupos.value.find(grupo => grupo.atributos.length > 0);
+  if (primeiroGrupoComAtributos) {
+    grupoSelecionadoTermoReferencia.value = primeiroGrupoComAtributos;
+  }
+
 
   const indiceGrupoCorrente = computed(() => {
-    return atualizacaoTermoReferencia.value.grupos.findIndex(
-      (grupo) => grupo === grupoSelecionadoTermoReferencia.value,
+    return flatGrupos.value.findIndex(
+      (grupo) => grupo.id === grupoSelecionadoTermoReferencia.value.id,
     )
   })
   const isPrimeiroGrupo = computed(() => indiceGrupoCorrente.value === 0)
   const isUltimoGrupo = computed(
-    () => indiceGrupoCorrente.value === atualizacaoTermoReferencia.value.grupos.length - 1,
+    () => indiceGrupoCorrente.value === flatGrupos.value.length - 1,
   )
 
   const calcularTotalAtributosRespondidos = (grupos: IGrupoTermoReferenciaDTO[]): number => {
@@ -123,23 +131,23 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   const irParaGrupoAnterior = () => {
     if (indiceGrupoCorrente.value > 0) {
       grupoSelecionadoTermoReferencia.value =
-        atualizacaoTermoReferencia.value.grupos[indiceGrupoCorrente.value - 1]
+      flatGrupos.value[indiceGrupoCorrente.value - 1]
     }
   }
 
   const irParaProximoGrupo = () => {
-    if (indiceGrupoCorrente.value < atualizacaoTermoReferencia.value.grupos.length - 1) {
+    if (indiceGrupoCorrente.value < flatGrupos.value.length - 1) {
       grupoSelecionadoTermoReferencia.value =
-        atualizacaoTermoReferencia.value.grupos[indiceGrupoCorrente.value + 1]
+      flatGrupos.value[indiceGrupoCorrente.value + 1]
     }
   }
 
-  const selecionarGrupo = (grupoSelected: IGrupoTermoReferenciaDTO) => {
+  const selecionarGrupo = (grupoSelected: IGrupoTermoReferenciaFlatDTO) => {
     grupoSelecionadoTermoReferencia.value = grupoSelected
   }
 
   const selecionarGrupoPorDescricao = (descricaoGrupo: string) => {
-    const grupoEncontrado = atualizacaoTermoReferencia.value.grupos.find(
+    const grupoEncontrado = flatGrupos.value.find(
       (grupo) => grupo.descricao === descricaoGrupo,
     )
     if (grupoEncontrado) {

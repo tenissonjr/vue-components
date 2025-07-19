@@ -6,8 +6,96 @@ export interface IAtualizacaoTermoReferenciaDTO {
   grupos: IGrupoTermoReferenciaDTO[]
 }
 
-// Exemplo de um objeto IAtualizacaoTermoReferenciaDTO completo
 export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
+  termoReferencia: {
+    id: 1,
+    numero: 2025001,
+    unidade: 'Departamento de Compras',
+    processo: '313780/2024',
+    dataCriacao: '2025-03-07',
+    descricao: 'Aquisição de Cadeiras',
+    versao: '1.0',
+    sei: 1,
+    finalidade: '',
+    situacao: 'Em elaboração',
+    responsavel: 'Tenisson',
+  },
+
+  grupos: [
+    {
+      id: -1,
+      descricao: 'DEFINIÇÃO DO OBJETO',
+      ordenacao: 1,
+      atributos: [
+        {
+          id: 1765033,
+          ordenacao: 1,
+          descricao: 'DEFINIÇÃO DO OBJETO',
+          codTipoAtributo: 1,
+          idResposta: null,
+          resposta: null,
+          anotacoes: [
+            {
+              id: 1765033,
+              autor: 'Tenisson',
+              dataCriacao: '2025-03-07',
+              texto: 'Preencher com o objeto da contratação.',
+            }
+            ,            {
+              id: 1765033,
+              autor: 'Tenisson',
+              dataCriacao: '2025-03-07',
+              texto: 'Segunda anotação de tamanho muiiiiiiitooo                   grande...............................   de !!.',
+            }
+
+          ],
+        },
+
+      ],
+    },
+
+    {
+      id: -2,
+      descricao: 'JUSTIFICATIVA',
+      ordenacao: 2,
+      atributos: [
+        {
+          id: 1765034,
+          ordenacao: 1,
+          descricao: 'JUSTIFICATIVA',
+          codTipoAtributo: 1,
+          idResposta: null,
+          resposta: null,
+          anotacoes: [],
+        },
+
+      ],
+    },
+
+    {
+      id: -3,
+      descricao: 'MODELO DE GESTÃO DO CONTRATO',
+      ordenacao: 3,
+      atributos: [
+
+        {
+          id: 1765035,
+          ordenacao: 1,
+          descricao: 'MODELO DE GESTÃO DO CONTRATO',
+          codTipoAtributo: 1,
+          idResposta: null,
+          resposta: null,
+          anotacoes: [],
+        },
+
+      ],
+    },
+
+  ],
+}
+
+// Exemplo de um objeto IAtualizacaoTermoReferenciaDTO completo
+export const __exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
   termoReferencia: {
     id: 1,
     numero: 2025001,
@@ -23,11 +111,13 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
   },
   grupos: [
     {
+      id: 10,
       descricao: 'Informações Iniciais',
       ordenacao: 1,
       atributos: [],
       grupos: [
         {
+          id: 2,
           descricao: 'Órgãos Requisitantes',
           ordenacao: 1,
           atributos: [
@@ -50,6 +140,7 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
           ],
         },
         {
+          id: 3,
           descricao: 'Órgãos Especificadores',
           ordenacao: 2,
           atributos: [
@@ -72,6 +163,7 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
           ],
         },
         {
+          id: 4,
           descricao: 'Contratação anterior',
           ordenacao: 3,
           atributos: [
@@ -96,6 +188,7 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
       ],
     },
     {
+      id: 20,
       descricao: 'Definição do Objeto',
       ordenacao: 2,
       atributos: [
@@ -134,6 +227,7 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
       ],
     },
     {
+      id: 30,
       descricao: 'Fundamentação da Contratação',
       ordenacao: 3,
       atributos: [
@@ -172,6 +266,7 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
       ],
     },
     {
+      id: 40,
       descricao: 'Requisitos da Contratação',
       ordenacao: 4,
       atributos: [
@@ -220,6 +315,86 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
               autor: 'Diego Fernandes',
               dataCriacao: '2025-03-07',
               texto: 'Especificar se há necessidade de garantia do objeto contratado.',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+
+export const _exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
+  termoReferencia: {
+    id: 1,
+    numero: 2025001,
+    unidade: 'Departamento de Compras',
+    processo: '12345/2025',
+    dataCriacao: '2025-03-07',
+    descricao: 'Termo de Referência de testes',
+    versao: '1.0',
+    sei: 987654,
+    finalidade: 'Aquisição de equipamentos para modernização',
+    situacao: 'Em elaboração',
+    responsavel: 'João Silva',
+  },
+  grupos: [
+    {
+      id: 10,
+      descricao: 'Objeto',
+      ordenacao: 1,
+      atributos: [
+        {
+          id: 1,
+          ordenacao: 1,
+          descricao: 'Objeto',
+          codTipoAtributo: 1,
+          idResposta: null,
+          resposta: null,
+          anotacoes: [
+            {
+              id: 1,
+              autor: 'Tenisson',
+              dataCriacao: '2025-03-07',
+              texto: 'Preencher com o objeto da contratação.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 20,
+      descricao: 'Justificativas',
+      ordenacao: 2,
+      atributos: [
+        {
+          id: 2,
+          ordenacao: 1,
+          descricao: 'Justificativa da contratação',
+          codTipoAtributo: 1,
+          idResposta: null,
+          resposta: null,
+          anotacoes: [
+            {
+              id: 2,
+              autor: 'Tenisson',
+              dataCriacao: '2025-03-07',
+              texto: 'Preencher com a justificativa da contratação.',
+            },
+          ],
+        },
+        {
+          id: 2,
+          ordenacao: 1,
+          descricao: 'Justificativa dos quantitativos',
+          codTipoAtributo: 1,
+          idResposta: null,
+          resposta: null,
+          anotacoes: [
+            {
+              id: 2,
+              autor: 'Tenisson',
+              dataCriacao: '2025-03-07',
+              texto: 'Preencher com a justificativa dos quantitativos dos itens.',
             },
           ],
         },
