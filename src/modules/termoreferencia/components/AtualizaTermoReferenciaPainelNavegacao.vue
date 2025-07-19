@@ -6,7 +6,7 @@
     </template>
     <template #tab-contents>
       <app-tab-content :value="1">
-        <atualiza-termo-referencia-lista-grupos />
+        <atualiza-termo-referencia-lista-grupos-tree-nodes />
       </app-tab-content>
       <app-tab-content :value="2">
         <atualiza-termo-referencia-lista-validacoes />
@@ -17,4 +17,6 @@
 <script setup lang="ts">
 import AtualizaTermoReferenciaListaGrupos from '@/modules/termoreferencia/components/AtualizaTermoReferenciaListaGrupos.vue';
 import AtualizaTermoReferenciaListaValidacoes from './AtualizaTermoReferenciaListaValidacoes.vue';
+import AtualizaTermoReferenciaListaGruposTreeNodes from './AtualizaTermoReferenciaListaGruposTreeNodes.vue';
+
 </script>
