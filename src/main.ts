@@ -26,11 +26,6 @@ app.use(createPinia())
 app.use(PrimeVue, {
   theme: {
     preset: Aura,
-    options: {
-      prefix: 'p',
-      darkModeSelector: 'system',
-      cssLayer: true,
-    },
   },
 
   locale: {
@@ -64,8 +59,9 @@ app.component('AppStep', AppStep)
 app.component('AppCard', AppCard)
 app.component('AppDataView', AppDataView)
 
-
 app.directive('tooltip', Tooltip)
 app.mount('#app')
 
-import '@assets/primevue-adapter.css'
+import 'primeicons/primeicons.css'
+
+//import '@assets/primevue-adapter.css'

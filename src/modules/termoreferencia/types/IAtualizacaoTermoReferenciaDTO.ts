@@ -40,17 +40,16 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
               autor: 'Tenisson',
               dataCriacao: '2025-03-07',
               texto: 'Preencher com o objeto da contratação.',
-            }
-            ,            {
+            },
+            {
               id: 1765033,
               autor: 'Tenisson',
               dataCriacao: '2025-03-07',
-              texto: 'Segunda anotação de tamanho muiiiiiiitooo                   grande...............................   de !!.',
-            }
-
+              texto:
+                'Segunda anotação de tamanho muiiiiiiitooo                   grande...............................   de !!.',
+            },
           ],
         },
-
       ],
     },
 
@@ -68,7 +67,6 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
           resposta: null,
           anotacoes: [],
         },
-
       ],
     },
 
@@ -77,7 +75,6 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
       descricao: 'MODELO DE GESTÃO DO CONTRATO',
       ordenacao: 3,
       atributos: [
-
         {
           id: 1765035,
           ordenacao: 1,
@@ -87,15 +84,13 @@ export const exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
           resposta: null,
           anotacoes: [],
         },
-
       ],
     },
-
   ],
 }
 
 // Exemplo de um objeto IAtualizacaoTermoReferenciaDTO completo
-export const __exemploTermoReferencia: IAtualizacaoTermoReferenciaDTO = {
+export const exemploTermoReferenciaCompleto: IAtualizacaoTermoReferenciaDTO = {
   termoReferencia: {
     id: 1,
     numero: 2025001,
