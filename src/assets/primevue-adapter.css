@@ -3,4 +3,10 @@
   /* Customização  do ToolTip
   /*---------------------------------------------------------------------------------*/
   --p-tooltip-max-width: 55rem;
+
+  --p-progressbar-background: #0a0a0a; /*		Background of root */
+  --p-progressbar-value-background: red;
+  --p-progressbar-border-radius: 1px; /*		Border radius of root */
+  --p-progressbar-height: 0.4rem; /*		Height of root */
+  --p-progressbar-label-color: 0a0a0a;
 }

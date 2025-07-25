@@ -9,6 +9,7 @@ import AppHistory from './components/AppHistory.vue'
 import App from './App.vue'
 import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
+import Material from '@primevue/themes/material'
 import Tooltip from 'primevue/tooltip'
 import AppTabs from './components/AppTabs.vue'
 import AppTabButton from './components/AppTabButton.vue'
@@ -19,13 +20,18 @@ import AppStep from './components/AppStep.vue'
 import AppStepPanel from './components/AppStepPanel.vue'
 import AppCard from './components/AppCard.vue'
 import AppDataView from './components/AppDataView/AppDataView.vue'
+import AppAutoButton from './components/AppAutoButton.vue'
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(PrimeVue, {
   theme: {
-    preset: Aura,
+    preset: Material,
+    options: {
+      prefix: 'p',
+      cssLayer: false,
+    },
   },
 
   locale: {
@@ -58,10 +64,11 @@ app.component('AppStepPanel', AppStepPanel)
 app.component('AppStep', AppStep)
 app.component('AppCard', AppCard)
 app.component('AppDataView', AppDataView)
+app.component('AppAutoButton', AppAutoButton)
 
 app.directive('tooltip', Tooltip)
 app.mount('#app')
 
-import 'primeicons/primeicons.css'
+//import 'primeicons/primeicons.css'
 
 //import '@assets/primevue-adapter.css'

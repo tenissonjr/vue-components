@@ -32,13 +32,15 @@
           placeholder="Select Cities" :maxSelectedLabels="3" />
       </div>
 
-      <div class="m-3 row" v-if="true">
+      <div class="m-3 row" v-if="false">
         <atualizar-termo-referencia />
       </div>
 
       <div class="m-3 row" v-if="false">
         <data-table-view />
       </div>
+
+      <app-auto-button :seconds="30" @onTriggerAction="handleClick" label="Salvar rascunho" />
 
 
 
@@ -64,4 +66,9 @@ const cities = ref([
   { name: 'Istanbul', code: 'IST' },
   { name: 'Paris', code: 'PRS' },
 ])
+
+
+const handleClick = () => {
+  console.log('Ação automática iniciada!')
+}
 </script>
