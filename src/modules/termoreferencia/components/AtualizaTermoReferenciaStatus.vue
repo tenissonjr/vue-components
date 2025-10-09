@@ -12,7 +12,7 @@
       </div>
       <div class="col-5 text-center">
         Total de atributos informados :
-        <span class="badge">{{ totalAtributosRespondidosRespondidosTermoReferencia }}</span> /
+        <span class="badge">{{ totalAtributosRespondidosTermoReferencia }}</span> /
         <span class="badge">{{ totalAtributosTermoReferencia }}</span> :
         <span :class="['badge', badgeColor]">{{ formattedPercentualAtributosTermoReferenciaRespondidos }}%</span>
       </div>
@@ -31,7 +31,7 @@ import { storeToRefs } from 'pinia';
 import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
 
 const termoReferenciaStore = useTermoReferenciaStore();
-const { totalAtributosTermoReferencia, totalAtributosRespondidosRespondidosTermoReferencia, percentualAtributosTermoReferenciaRespondidos, exibirPainelNavegacao } = storeToRefs(termoReferenciaStore)
+const { totalAtributosTermoReferencia, totalAtributosRespondidosTermoReferencia, percentualAtributosTermoReferenciaRespondidos, exibirPainelNavegacao } = storeToRefs(termoReferenciaStore)
 
 
 const formattedPercentualAtributosTermoReferenciaRespondidos = computed(() => {

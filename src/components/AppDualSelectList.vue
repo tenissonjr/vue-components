@@ -16,7 +16,6 @@
 </template>
 <script setup lang="ts">
 import PickList from 'primevue/picklist'
-const emit = defineEmits(['onModelUpdated'])
 const model = defineModel<unknown[][]>()
 const props = defineProps({
   propertyId: {
@@ -58,15 +57,16 @@ const props = defineProps({
   },
 })
 
-const doModelUpdate = (value: unknown[][]): void => {
-  // emit('onModelUpdated', value)
-}
-const doMoveToSource = (value: unknown): void => {
-
+const doModelUpdate = (): void => {
+  // Placeholder for future implementation
 }
 
-const doMoveAllToSource = (value: unknown): void => {
+const doMoveToSource = (): void => {
+  // Placeholder for future implementation
+}
 
+const doMoveAllToSource = (): void => {
+  // Placeholder for future implementation
 }
 </script>
 <style scoped>

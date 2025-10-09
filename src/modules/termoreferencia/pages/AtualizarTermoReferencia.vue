@@ -24,7 +24,7 @@
     <div class="row">
       <div class="col-12">
         <button class="action-button btn btn-primary"
-          @click="termoReferenciaStore.salvarRascusnhoTermoReferencia()">Salvar rascunho</button>
+          @click="termoReferenciaStore.salvarRascunhoTermoReferencia()">Salvar rascunho</button>
         <button class="action-button btn btn-primary" @click="termoReferenciaStore.concluirTermoReferencia()">Concluir
           Termo de Referência</button>
         <button class="action-button btn btn-secondary">Voltar</button>

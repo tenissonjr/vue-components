@@ -39,7 +39,6 @@ export function useDashCard() {
     if (!cardExists) {
       return
     }
-    //Desmarcar todos os cards com o alias passado
     cards.value.forEach((card) => {
       if (card.alias === alias) {
         card.selected = false

@@ -27,7 +27,7 @@
                 <td>
 
                   <a href=" #" @click="onGrupoSelecionado(grupo)"><span
-                      v-html="'&nbsp;'.repeat(grupo.nivel * 2)"></span>{{ grupo.ordernacaoHierarquica }}. {{
+                      v-html="'&nbsp;'.repeat(grupo.nivel * 2)"></span>{{ grupo.ordenacaoHierarquica }}. {{
                         grupo.descricao
                       }}</a>
                 </td>
@@ -36,7 +36,7 @@
               <template v-else>
                 <td>
 
-                  <span v-html="'&nbsp;'.repeat(grupo.nivel * 2)"></span>{{ grupo.ordernacaoHierarquica }}.
+                  <span v-html="'&nbsp;'.repeat(grupo.nivel * 2)"></span>{{ grupo.ordenacaoHierarquica }}.
                   {{
                     grupo.descricao }}
                 </td>

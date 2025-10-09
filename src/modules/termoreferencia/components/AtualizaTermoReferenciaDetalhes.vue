@@ -88,7 +88,6 @@
 </template>
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import type { ITermoReferenciaDTO } from '@/modules/termoreferencia/types/ITermoReferenciaDTO'
 import { useTermoReferenciaStore } from '@/modules/termoreferencia/store/TermoReferenciaStore';
 
 const termoReferenciaStore = useTermoReferenciaStore();

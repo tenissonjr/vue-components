@@ -21,7 +21,7 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
     id: 0,
     descricao: '',
     nivel: 0,
-    ordernacaoHierarquica: '0',
+    ordenacaoHierarquica: '0',
     atributos: [],
     ordenacao: 0,
   })
@@ -33,15 +33,11 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
   const flatGrupos = computed((): IGrupoTermoReferenciaFlatDTO[] =>
     flatGrupoTermoReferencia(atualizacaoTermoReferencia.value.grupos),
   )
-  //Exibir a string  json de flatGrupos no console
-  console.log('JSON=>',JSON.stringify(flatGrupos.value))
 
-  // Inicializa grupoSelecionadoTermoReferencia com o primeiro grupo de AtualizacaoTermoReferencia.grupos
   const primeiroGrupoComAtributos = flatGrupos.value.find(grupo => grupo.atributos.length > 0);
   if (primeiroGrupoComAtributos) {
     grupoSelecionadoTermoReferencia.value = primeiroGrupoComAtributos;
   }
-
 
   const indiceGrupoCorrente = computed(() => {
     return flatGrupos.value.findIndex(
@@ -65,30 +61,26 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
     return total
   }
 
-  //Total de Atributos do Grupo Selecionado
   const totalAtributosGrupoSelecionado = computed(() => {
     return grupoSelecionadoTermoReferencia.value.atributos.length
   })
 
-  //Total Atributos de Todos os Grupos
   const totalAtributosTermoReferencia = computed(() => {
     return atualizacaoTermoReferencia.value.grupos.reduce((total, grupo) => {
       return total + grupo.atributos.length
     }, 0)
   })
 
-  //Total de Atributos Respondidos do Grupo Selecionado
   const totalAtributosRespondidosGrupoSelecionado = computed(() => {
     return calcularTotalAtributosRespondidos([grupoSelecionadoTermoReferencia.value])
   })
-  //Total de Atributos Respondidos de Todos os Grupos
-  const totalAtributosRespondidosRespondidosTermoReferencia = computed(() => {
+  const totalAtributosRespondidosTermoReferencia = computed(() => {
     return calcularTotalAtributosRespondidos(atualizacaoTermoReferencia.value.grupos)
   })
 
   const percentualAtributosTermoReferenciaRespondidos = computed(() => {
     return Math.round(
-      (totalAtributosRespondidosRespondidosTermoReferencia.value /
+      (totalAtributosRespondidosTermoReferencia.value /
         totalAtributosTermoReferencia.value) *
         100,
     )
@@ -155,20 +147,20 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
     }
   }
 
-  const salvarRascusnhoTermoReferencia = () => {
+  const salvarRascunhoTermoReferencia = () => {
     alert('Rascunho do Termo de Referência salvo com sucesso!')
   }
 
   const concluirTermoReferencia = () => {
     if (
-      totalAtributosRespondidosRespondidosTermoReferencia.value ===
+      totalAtributosRespondidosTermoReferencia.value ===
       totalAtributosTermoReferencia.value
     ) {
       alert('Termo de Referência concluído com sucesso!')
     } else {
       const totalAtributosNaoInformados =
         totalAtributosTermoReferencia.value -
-        totalAtributosRespondidosRespondidosTermoReferencia.value
+        totalAtributosRespondidosTermoReferencia.value
       alert(
         `Termo de Referência não pode ser concluído pois existem ${totalAtributosNaoInformados} atributo(s) obrigatório(s) não informado(s).`,
       )
@@ -190,11 +182,11 @@ export const useTermoReferenciaStore = defineStore('termoReferenciaStore', () =>
     totalAtributosGrupoSelecionado,
     totalAtributosTermoReferencia,
     totalAtributosRespondidosGrupoSelecionado,
-    totalAtributosRespondidosRespondidosTermoReferencia,
+    totalAtributosRespondidosTermoReferencia,
     percentualAtributosTermoReferenciaRespondidos,
     listaValidacaoAtributos,
     obterStatusAtributo,
-    salvarRascusnhoTermoReferencia,
+    salvarRascunhoTermoReferencia,
     concluirTermoReferencia,
   }
 })

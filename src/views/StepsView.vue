@@ -18,7 +18,6 @@
 import { ref } from 'vue';
 import SelecaoPedidoAquisicao from './SelecaoPedidoAquisicao.vue';
 import SelecaoTipoModeloTermoReferencia from './SelecaoTipoModeloTermoReferencia.vue';
-import SelacaoModeloTermoReferencia from './SelacaoModeloTermoReferencia.vue';
-const panelNumber = ref(1);
 
+const panelNumber = ref(1);
 </script>

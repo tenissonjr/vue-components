@@ -56,7 +56,7 @@ import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import InputIcon from 'primevue/inputicon';
 import IconField from 'primevue/iconfield';
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { exemploTermoReferenciaTreeNode } from '../types/IAtualizacaoTermoReferenciaTreeNodeDTO';
 import { exemploTermoReferenciaCompleto } from '../types/IAtualizacaoTermoReferenciaDTO';
 import Popover from 'primevue/popover';

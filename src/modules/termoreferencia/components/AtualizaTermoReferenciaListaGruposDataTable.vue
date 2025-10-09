@@ -46,7 +46,6 @@ import InputIcon from 'primevue/inputicon';
 import InputText from 'primevue/inputtext';
 import { ref, watch } from 'vue';
 
-const situacao = ref('');
 const selectedRow = ref();
 const metaKey = ref(true);
 const termoReferenciaStore = useTermoReferenciaStore();

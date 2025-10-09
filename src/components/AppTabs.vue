@@ -12,11 +12,11 @@
 import Tabs from 'primevue/tabs';
 import TabList from 'primevue/tablist';
 import TabPanels from 'primevue/tabpanels';
-const props = defineProps({
+
+defineProps({
   value: {
     type: Number,
     required: true,
   },
 })
-
 </script>
